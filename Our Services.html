@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Services - Farah Mom & Baby Care</title>
+    <link rel="icon" type="image/png" href="asset/logo1.PNG" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --terracotta: #e2725b;
+        --soft-terracotta: #fdf6f0;
+        --warm-beige: #f5e8d3;
+        --text-dark: #5d4037;
+        --text-light: #8d6e63;
+        --bg-light: #fdf6f0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #ffffff;
+        color: var(--text-dark);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(226, 114, 91, 0.1);
+        transition: all 0.3s ease;
+      }
+      .navbar.scrolled {
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+      }
+      .navbar-brand {
+        font-weight: 700;
+        color: var(--terracotta) !important;
+        font-size: 1.5rem;
+      }
+      .nav-link {
+        color: var(--text-light) !important;
+        font-weight: 500;
+        margin: 0 1rem;
+        transition: color 0.3s ease;
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--terracotta) !important;
+      }
+
+      /* Hero */
+      .hero-services {
+        background: linear-gradient(
+          135deg,
+          var(--soft-terracotta) 0%,
+          #fff 100%
+        );
+        padding: 4rem 0;
+        text-align: center;
+      }
+      .hero-services h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+      }
+      .hero-services p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Section */
+      section {
+        padding: 4rem 1rem;
+      }
+      .section-title {
+        text-align: center;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+        font-size: 2rem;
+      }
+      .subtitle {
+        text-align: center;
+        color: var(--text-light);
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+      }
+
+      /* Tabs for Categories */
+      .nav-tabs {
+        border: none;
+        justify-content: center;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+      .nav-tabs .nav-link {
+        border: none;
+        color: var(--text-light);
+        font-weight: 500;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        background: transparent;
+        margin: 0 0.5rem;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+      .nav-tabs .nav-link.active {
+        background: var(--terracotta);
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(226, 114, 91, 0.3);
+      }
+      .nav-tabs .nav-link:hover {
+        color: var(--terracotta) !important;
+        background: rgba(226, 114, 91, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* Treatment Cards */
+      .treatment-card {
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        overflow: hidden;
+        background: white;
+        height: 100%;
+      }
+      .treatment-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+      .treatment-card i {
+        font-size: 2rem;
+        color: var(--terracotta);
+        margin-bottom: 1rem;
+      }
+      .treatment-card .card-body {
+        padding: 2rem;
+        text-align: center;
+      }
+      .treatment-card .card-title {
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+      }
+      .treatment-card .card-text {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+      }
+      .btn-book {
+        background: var(--terracotta);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+      }
+      .btn-book:hover {
+        background: #d95a40;
+        color: white;
+        transform: scale(1.05);
+      }
+
+      /* Fade-in */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease-out;
+      }
+      .fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* CTA Booking */
+      .cta-booking {
+        background: linear-gradient(135deg, var(--terracotta) 0%, #d95a40 100%);
+        color: white;
+        text-align: center;
+        padding: 4rem 2rem;
+        border-radius: 20px;
+        margin: 4rem 1rem;
+      }
+      .cta-booking h2 {
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .cta-booking p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      /* Floating Buttons */
+      .float-btn {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 1000;
+      }
+      .float-btn a {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+      .float-btn a:hover {
+        transform: scale(1.1);
+      }
+      .wa {
+        background: #25d366;
+      }
+      .call {
+        background: var(--terracotta);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-services h1 {
+          font-size: 2rem;
+        }
+        .nav-tabs .nav-link {
+          padding: 0.75rem 1rem;
+          margin: 0.25rem;
+          font-size: 0.9rem;
+        }
+        .treatment-card .card-body {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">FMBC</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#home">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#facility">Fasilitas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="our-services.html">Layanan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#booking">Booking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="survey/survey.html"
+                >Survey gejala bayi</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Services -->
+    <section class="hero-services fade-in">
+      <div class="container">
+        <h1>Layanan Kami</h1>
+        <p>
+          Perawatan lembut dan profesional untuk ibu, bayi, dan keluarga. Pilih
+          kategori di bawah untuk detail lebih lanjut.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tabs for Categories -->
+    <section class="container fade-in">
+      <ul class="nav nav-tabs" id="serviceTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="baby-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#baby"
+            type="button"
+            role="tab"
+          >
+            Baby Treatment
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="kids-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#kids"
+            type="button"
+            role="tab"
+          >
+            Kids Treatment
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="mom-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#mom"
+            type="button"
+            role="tab"
+          >
+            Mom Treatment
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="yoga-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#yoga"
+            type="button"
+            role="tab"
+          >
+            Kelas Yoga & Parenting
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="package-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#package"
+            type="button"
+            role="tab"
+          >
+            Package Treatment
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="serviceTabContent">
+        <!-- Baby Tab -->
+        <div class="tab-pane fade show active" id="baby" role="tabpanel">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-baby-carriage"></i>
+                  <h5 class="card-title">Baby Massage (0-12 Bulan)</h5>
+                  <p class="card-text">
+                    Pemeriksaan kesehatan & pijatan lembut dengan oil premium.
+                    Durasi: 30 menit. Harga mulai: Rp 100.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Baby Massage')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-stethoscope"></i>
+                  <h5 class="card-title">
+                    Pediatric Medical Massage For Baby (0-12 Bulan)
+                  </h5>
+                  <p class="card-text">
+                    Pijat untuk keluhan seperti kolik & konstipasi dengan
+                    essential oil. Durasi: 30 menit. Harga mulai: Rp 130.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Pediatric Medical Massage - Baby')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-spa"></i>
+                  <h5 class="card-title">Baby Spa (3-10 Bulan)</h5>
+                  <p class="card-text">
+                    Massage + gym + swim di air hangat. Durasi: 60 menit. Harga
+                    mulai: Rp 185.000
+                  </p>
+                  <button class="btn btn-book" onclick="bookNow('Baby Spa')">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-bath"></i>
+                  <h5 class="card-title">Bubble Bath (10 Bulan - 5 Tahun)</h5>
+                  <p class="card-text">
+                    Mandi busa dengan mainan seru untuk relaksasi & motorik.
+                    Durasi: 30 menit. Harga mulai: Rp 130.000
+                  </p>
+                  <button class="btn btn-book" onclick="bookNow('Bubble Bath')">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-mask"></i>
+                  <h5 class="card-title">Baby Body Mask (3-12 Bulan)</h5>
+                  <p class="card-text">
+                    Masker organik untuk motorik & kulit. Durasi: 30 menit.
+                    Harga mulai: Rp 80.000 + FREE Dimandikan
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Baby Body Mask')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-scissors"></i>
+                  <h5 class="card-title">Baby Hair Cut (0-12 Bulan)</h5>
+                  <p class="card-text">
+                    Cukur rambut botak/gundul aman. Durasi: 15-20 menit. Harga
+                    mulai: Rp 90.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Baby Hair Cut')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-ear-deaf"></i>
+                  <h5 class="card-title">
+                    Tindik Telinga + Pasang Anting (0-5 Bulan)
+                  </h5>
+                  <p class="card-text">
+                    Proses aman dengan jarum steril. Durasi: 20-30 menit. Harga
+                    mulai: Rp 40.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Tindik Telinga + Pasang Anting')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-shower"></i>
+                  <h5 class="card-title">Baby Bath (0-12 Bulan)</h5>
+                  <p class="card-text">
+                    Mandi setelah treatment. Durasi: 15 menit. Harga mulai: Rp
+                    90.000 (wajib dengan treatment lain)
+                  </p>
+                  <button class="btn btn-book" onclick="bookNow('Baby Bath')">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kids Tab -->
+        <div class="tab-pane fade" id="kids" role="tabpanel">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-child-reaching"></i>
+                  <h5 class="card-title">Kids Massage (1-10 Tahun)</h5>
+                  <p class="card-text">
+                    Pijatan lembut seluruh badan. Durasi: 30 menit. Harga mulai:
+                    Rp 90.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Kids Massage')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-stethoscope"></i>
+                  <h5 class="card-title">
+                    Pediatric Medical Massage For Kids (1-10 Tahun)
+                  </h5>
+                  <p class="card-text">
+                    Pijat untuk keluhan anak dengan essential oil. Durasi: 30
+                    menit. Harga mulai: Rp 120.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Pediatric Medical Massage - Kids')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-mask"></i>
+                  <h5 class="card-title">Kids Body Mask (1-10 Tahun)</h5>
+                  <p class="card-text">
+                    Masker organik untuk motorik & kreativitas. Durasi: 30
+                    menit. Harga mulai: Rp 90.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Kids Body Mask')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mom Tab -->
+        <div class="tab-pane fade" id="mom" role="tabpanel">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-person-pregnant"></i>
+                  <h5 class="card-title">Pregnancy Massage (18-41 Minggu)</h5>
+                  <p class="card-text">
+                    Pijat aman untuk relaksasi & tidur. Durasi: 60-90 menit.
+                    Harga mulai: Rp 180.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Pregnancy Massage')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-face-smile"></i>
+                  <h5 class="card-title">Totok Wajah & Masker Wajah</h5>
+                  <p class="card-text">
+                    Perawatan kecantikan aman untuk hamil/menyusui. Durasi: 30
+                    menit. Harga mulai: Rp 75.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Totok Wajah & Masker Wajah')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-spa"></i>
+                  <h5 class="card-title">
+                    Gelombang Cinta Massage (37-41 Minggu)
+                  </h5>
+                  <p class="card-text">
+                    Induksi alami untuk persalinan. Durasi: 45 menit. Harga
+                    mulai: Rp 190.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Gelombang Cinta Massage')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-baby"></i>
+                  <h5 class="card-title">Mom Serenity Massage (Pijat Nifas)</h5>
+                  <p class="card-text">
+                    Pijat nifas untuk relaksasi pasca lahir. Durasi: 60-90
+                    menit. Harga mulai: Rp 150.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Mom Serenity Massage')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-bath"></i>
+                  <h5 class="card-title">Foot Spa</h5>
+                  <p class="card-text">
+                    Rendaman kaki untuk pegal. Durasi: 15-20 menit. Harga mulai:
+                    Rp 40.000 (wajib dengan treatment lain)
+                  </p>
+                  <button class="btn btn-book" onclick="bookNow('Foot Spa')">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-heart"></i>
+                  <h5 class="card-title">
+                    Lactation Massage (1 Hari - 24 Bulan Pasca Persalinan)
+                  </h5>
+                  <p class="card-text">
+                    Pijat oksitosin & breast care untuk ASI. Durasi: 45 menit.
+                    Harga mulai: Rp 135.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Lactation Massage')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-mask"></i>
+                  <h5 class="card-title">Masker Payudara</h5>
+                  <p class="card-text">
+                    Masker untuk lancar ASI. Durasi: 15-20 menit. Harga mulai:
+                    Rp 35.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Masker Payudara')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-vial"></i>
+                  <h5 class="card-title">Pemeriksaan Gula Darah</h5>
+                  <p class="card-text">
+                    Cek kesehatan dasar. Harga: Rp 25.000-75.000 (wajib dengan
+                    treatment lain)
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Pemeriksaan Gula Darah')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-vial"></i>
+                  <h5 class="card-title">Pemeriksaan Kolesterol</h5>
+                  <p class="card-text">
+                    Cek kesehatan dasar. Harga: Rp 35.000-85.000 (wajib dengan
+                    treatment lain)
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Pemeriksaan Kolesterol')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-vial"></i>
+                  <h5 class="card-title">Pemeriksaan Asam Urat</h5>
+                  <p class="card-text">
+                    Cek kesehatan dasar. Harga: Rp 25.000-75.000 (wajib dengan
+                    treatment lain)
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Pemeriksaan Asam Urat')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Yoga Tab -->
+        <div class="tab-pane fade" id="yoga" role="tabpanel">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-person-yoga"></i>
+                  <h5 class="card-title">Kelas Senam Hamil (27-41 Minggu)</h5>
+                  <p class="card-text">
+                    Senam + pemeriksaan + sharing. Durasi: 75 menit. Harga
+                    mulai: Rp 65.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Kelas Senam Hamil')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-person-yoga"></i>
+                  <h5 class="card-title">Senam Hamil Private (27-41 Minggu)</h5>
+                  <p class="card-text">
+                    Senam intimate + pemeriksaan. Durasi: 75 menit. Harga mulai:
+                    Rp 150.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Senam Hamil Private')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-person-yoga"></i>
+                  <h5 class="card-title">
+                    Senam Hamil Private With Bestie (27-41 Minggu)
+                  </h5>
+                  <p class="card-text">
+                    Senam berdua dengan teman. Durasi: 75 menit. Harga mulai: Rp
+                    280.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Senam Hamil Private With Bestie')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-person-yoga"></i>
+                  <h5 class="card-title">
+                    Prenatal Gentle Yoga Private (13-41 Minggu)
+                  </h5>
+                  <p class="card-text">
+                    Yoga private untuk hamil. Durasi: 75 menit. Harga mulai: Rp
+                    245.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Prenatal Gentle Yoga Private')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-person-yoga"></i>
+                  <h5 class="card-title">
+                    Prenatal Gentle Yoga Private With Bestie (13-41 Minggu)
+                  </h5>
+                  <p class="card-text">
+                    Yoga berdua dengan teman hamil. Durasi: 75 menit. Harga
+                    mulai: Rp 295.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Prenatal Gentle Yoga Private With Bestie')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-person-yoga"></i>
+                  <h5 class="card-title">
+                    Prenatal Couple Yoga Private (13-41 Minggu)
+                  </h5>
+                  <p class="card-text">
+                    Yoga untuk suami-istri. Durasi: 75 menit. Harga mulai: Rp
+                    295.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Prenatal Couple Yoga Private')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-person-yoga"></i>
+                  <h5 class="card-title">
+                    Kelas Prenatal Gentle Yoga (13-41 Minggu)
+                  </h5>
+                  <p class="card-text">
+                    Kelas yoga untuk hamil. Durasi: 75 menit. Harga mulai: Rp
+                    90.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Kelas Prenatal Gentle Yoga')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <h5 class="card-title">Beginner Parenting Private Course</h5>
+                  <p class="card-text">
+                    Kursus perawatan bayi baru lahir. Durasi: 120 menit. Harga
+                    mulai: Rp 200.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Beginner Parenting Private Course')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <h5 class="card-title">Birthing Essentials Private Class</h5>
+                  <p class="card-text">
+                    Persiapan persalinan. Durasi: 90 menit. Harga mulai: Rp
+                    250.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Birthing Essentials Private Class')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <h5 class="card-title">Comprehensive Course</h5>
+                  <p class="card-text">
+                    Kombinasi parenting & birthing. Durasi: 180 menit. Harga
+                    mulai: Rp 400.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Comprehensive Course')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package Tab -->
+        <div class="tab-pane fade" id="package" role="tabpanel">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Happy Baby Package (3-12 Bulan)</h5>
+                  <p class="card-text">
+                    Baby Massage + Body Mask. Durasi: 60 menit. Harga mulai: Rp
+                    185.000 + FREE Dimandikan
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Happy Baby Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Baby Glow Up Package (3-12 Bulan)</h5>
+                  <p class="card-text">
+                    Baby Massage + Hair Cut + Body Mask. Durasi: 90 menit. Harga
+                    mulai: Rp 265.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Baby Glow Up Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">
+                    Baby/Kids Brave Package (10 Bulan-10 Tahun)
+                  </h5>
+                  <p class="card-text">
+                    Massage + Bubble Bath. Durasi: 60 menit. Harga mulai: Rp
+                    170.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Baby/Kids Brave Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">
+                    Baby / Kids Sensory Play Package (10 Bulan-10 Tahun)
+                  </h5>
+                  <p class="card-text">
+                    Massage + Body Mask + Bubble Bath. Durasi: 90 menit. Harga
+                    mulai: Rp 205.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Baby / Kids Sensory Play Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Happy Kids Package (1-10 Tahun)</h5>
+                  <p class="card-text">
+                    Kids Massage + Body Mask + Bubble Bath. Durasi: 90 menit.
+                    Harga mulai: Rp 295.000 + FREE Dimandikan
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Happy Kids Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">
+                    Baby Spa+ (Pediatric Medical Massage - Baby Gym - Baby Swim)
+                  </h5>
+                  <p class="card-text">
+                    Kombinasi lengkap spa medis. Durasi: 60 menit. Harga mulai:
+                    Rp 265.000
+                  </p>
+                  <button class="btn btn-book" onclick="bookNow('Baby Spa+')">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Ayudia Package</h5>
+                  <p class="card-text">
+                    Pregnancy Massage + Totok & Masker Wajah. Durasi: 90 menit.
+                    Harga mulai: Rp 230.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Ayudia Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Aurellia Package</h5>
+                  <p class="card-text">
+                    Pregnancy Massage + Body Scrub/Lulur. Durasi: 90 menit.
+                    Harga mulai: Rp 260.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Aurellia Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Yasmin Package</h5>
+                  <p class="card-text">
+                    Pregnancy Massage + Totok Wajah + Masker + Foot Spa. Durasi:
+                    105 menit. Harga mulai: Rp 330.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Yasmin Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Danita Package</h5>
+                  <p class="card-text">
+                    Pregnancy Massage + Body Scrub + Totok & Masker Wajah.
+                    Durasi: 120 menit. Harga mulai: Rp 450.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Danita Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Lily Package</h5>
+                  <p class="card-text">
+                    Pregnancy Massage + Body Scrub/Lulur + Totok & Masker + Foot
+                    Spa. Durasi: 135 menit. Harga mulai: Rp 350.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Lily Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Erina Package</h5>
+                  <p class="card-text">
+                    Pijat Nifas + Laktasi + Totok & Masker + Masker Payudara.
+                    Durasi: 150 menit. Harga mulai: Rp 515.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Erina Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Fahara Package</h5>
+                  <p class="card-text">
+                    Pijat Nifas & Laktasi. Durasi: 90 menit. Harga mulai: Rp
+                    325.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Fahara Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Gamila Package</h5>
+                  <p class="card-text">
+                    Pijat Nifas + Laktasi + Totok & Masker + Foot Spa + Masker
+                    Payudara. Durasi: 165 menit. Harga mulai: Rp 480.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Gamila Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Diana Package</h5>
+                  <p class="card-text">
+                    Pijat Nifas + Laktasi + Totok & Masker Wajah. Durasi: 165
+                    menit. Harga mulai: Rp 460.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Diana Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Nadine Package</h5>
+                  <p class="card-text">
+                    Pijat Nifas + Totok Wajah + Masker + Foot Spa. Durasi: 110
+                    menit. Harga mulai: Rp 365.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Nadine Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Ariana Package</h5>
+                  <p class="card-text">
+                    Pijat Nifas + Laktasi + Masker Payudara. Durasi: 120 menit.
+                    Harga mulai: Rp 310.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Ariana Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Tasya Package</h5>
+                  <p class="card-text">
+                    Pijat Laktasi + Totok & Masker Wajah. Durasi: 90 menit.
+                    Harga mulai: Rp 220.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Tasya Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Amira Package</h5>
+                  <p class="card-text">
+                    Pijat Laktasi + Totok & Masker + Masker Payudara. Durasi: 90
+                    menit. Harga mulai: Rp 225.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Amira Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Yumna Package</h5>
+                  <p class="card-text">
+                    Pijat Nifas + Totok & Masker Wajah. Durasi: 90 menit. Harga
+                    mulai: Rp 230.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Yumna Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Selena Package</h5>
+                  <p class="card-text">
+                    Pijat Nifas & Body Scrub. Durasi: 90 menit. Harga mulai: Rp
+                    270.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Selena Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Tiffany Package</h5>
+                  <p class="card-text">
+                    Pijat Nifas + Laktasi + Totok & Masker. Durasi: 135 menit.
+                    Harga mulai: Rp 290.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Tiffany Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Jessica Package</h5>
+                  <p class="card-text">
+                    Pijat Laktasi + Masker Payudara. Durasi: 60 menit. Harga
+                    mulai: Rp 185.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Jessica Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Moby Package</h5>
+                  <p class="card-text">
+                    Baby Massage & Pijat Nifas. Durasi: 90 menit. Harga mulai:
+                    Rp 230.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Moby Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Moba Package</h5>
+                  <p class="card-text">
+                    Baby Massage & Pijat Laktasi. Durasi: 75 menit. Harga mulai:
+                    Rp 270.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Moba Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Zara Package</h5>
+                  <p class="card-text">
+                    4x Senam Hamil Private + 1x Beginner Parenting. Harga mulai:
+                    Rp 835.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Zara Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Zully Package</h5>
+                  <p class="card-text">
+                    4x Senam Hamil + 1x Birthing Essentials. Harga mulai: Rp
+                    750.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Zully Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Zada Package</h5>
+                  <p class="card-text">
+                    4x Prenatal Gentle Yoga Private + 1x Beginner Parenting.
+                    Harga mulai: Rp 1.275.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Zada Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card treatment-card">
+                <div class="card-body">
+                  <i class="fa-solid fa-gift"></i>
+                  <h5 class="card-title">Zayn Package</h5>
+                  <p class="card-text">
+                    4x Prenatal Gentle Yoga + 1x Birthing Essentials. Harga
+                    mulai: Rp 1.200.000
+                  </p>
+                  <button
+                    class="btn btn-book"
+                    onclick="bookNow('Zayn Package')"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Booking -->
+    <section class="cta-booking fade-in">
+      <div class="container">
+        <h2>Siap Memulai Perawatan?</h2>
+        <p>Hubungi kami sekarang untuk reservasi mudah dan cepat.</p>
+        <button
+          class="btn btn-light btn-lg px-5 py-3"
+          onclick="window.open('https://wa.me/628118878485?text=Saya%20ingin%20booking%20treatment%20di%20FMBC', '_blank')"
+        >
+          <i class="fab fa-whatsapp me-2"></i> Chat WhatsApp
+        </button>
+      </div>
+    </section>
+
+    <!-- Floating Buttons -->
+    <div class="float-btn">
+      <a
+        href="https://wa.me/628118878485"
+        class="wa"
+        target="_blank"
+        title="WhatsApp"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="tel:+628118878485" class="call" title="Call">
+        <i class="fa-solid fa-phone"></i>
+      </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+      });
+
+      // Fade-in animation
+      const fadeEls = document.querySelectorAll(".fade-in");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("show");
+          });
+        },
+        { threshold: 0.1 }
+      );
+      fadeEls.forEach((el) => observer.observe(el));
+
+      // Book Now function
+      function bookNow(treatment) {
+        const message = `Halo, saya ingin booking ${treatment}. Bisa bantu jadwal?`;
+        window.open(
+          `https://wa.me/628118878485?text=${encodeURIComponent(message)}`,
+          "_blank"
+        );
+      }
+    </script>
+  </body>
+</html>

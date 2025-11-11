@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Survei Bayi</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+        margin: 0;
+        padding: 20px;
+      }
+      .dashboard {
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-width: 900px;
+        margin: 20px auto;
+      }
+      h2 {
+        color: #333;
+        font-weight: 600;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+      .username-info {
+        color: #666;
+        font-size: 1em;
+        margin-bottom: 20px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .add-section {
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 12px;
+        background: #f8f9fa;
+      }
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+      }
+      .add-btn {
+        background: #2196f3;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        margin: 5px 0;
+      }
+      .add-btn:hover {
+        background: #1976d2;
+      }
+      .edit-btn {
+        background: #ffc107;
+        color: black;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 10px;
+        font-size: 12px;
+      }
+      .edit-btn:hover {
+        background: #ffb300;
+      }
+      .delete-btn {
+        background: #f44336;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 10px;
+        font-size: 12px;
+      }
+      .delete-btn:hover {
+        background: #d32f2f;
+      }
+      .question-item,
+      .disease-item {
+        border: 1px solid #e0e0e0;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 8px;
+        background: #f9f9f9;
+      }
+      .question-item p,
+      .disease-item p {
+        margin: 5px 0;
+      }
+      .answer-item {
+        margin-left: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background: #fff;
+        margin: 5px 0;
+      }
+      .back-btn {
+        background: #757575;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 10px;
+        width: auto;
+      }
+      .back-btn:hover {
+        background: #616161;
+      }
+      i {
+        margin-right: 5px;
+      }
+      #addAnswerModal,
+      #editModal,
+      #editDiseaseModal,
+      #addDiseaseModal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 600px;
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .close:hover {
+        color: black;
+      }
+      .answer-item input[type="number"] {
+        width: auto;
+        margin-left: 10px;
+      }
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        resize: vertical;
+        min-height: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard">
+      <h2><i class="fas fa-tachometer-alt"></i> Dashboard Admin</h2>
+      <div class="username-info">
+        <p>
+          <i class="fas fa-user"></i> Username:
+          <span id="currentUsername">Loading...</span>
+        </p>
+      </div>
+      <!-- Fitur tambah pertanyaan baru -->
+      <div class="add-section">
+        <h3><i class="fas fa-plus"></i> Tambah Pertanyaan Baru</h3>
+        <input
+          type="text"
+          id="newQuestionText"
+          placeholder="Ketik pertanyaan baru, misal: 'Apakah bayi demam?'"
+        />
+        <button class="add-btn" onclick="addQuestion()">
+          <i class="fas fa-save"></i> Tambah Pertanyaan
+        </button>
+      </div>
+      <!-- Fitur kelola pertanyaan & jawaban -->
+      <div class="add-section">
+        <h3><i class="fas fa-list"></i> Kelola Pertanyaan & Jawaban</h3>
+        <div id="questionList"></div>
+      </div>
+      <!-- Fitur tambah penyakit baru -->
+      <div class="add-section">
+        <h3><i class="fas fa-plus"></i> Tambah Penyakit Baru</h3>
+        <input
+          type="text"
+          id="newDiseaseTitle"
+          placeholder="Nama penyakit, misal: 'Flu Ringan'"
+        />
+        <input
+          type="number"
+          id="newDiseaseMin"
+          placeholder="Min Score"
+          min="0"
+        />
+        <input
+          type="number"
+          id="newDiseaseMax"
+          placeholder="Max Score"
+          min="0"
+        />
+        <textarea
+          id="newDiseaseText"
+          placeholder="Deskripsi & saran..."
+        ></textarea>
+        <select id="newDiseaseClass">
+          <option value="low">Low (Normal)</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="urgent">Urgent</option>
+        </select>
+        <button class="add-btn" onclick="addDisease()">
+          <i class="fas fa-save"></i> Tambah Penyakit
+        </button>
+      </div>
+      <!-- Fitur kelola penyakit -->
+      <div class="add-section">
+        <h3><i class="fas fa-list"></i> Kelola Daftar Penyakit</h3>
+        <div id="diseaseList"></div>
+      </div>
+      <button class="back-btn" onclick="backToMain()">
+        <i class="fas fa-arrow-left"></i> Kembali ke Main
+      </button>
+    </div>
+
+    <!-- Modal untuk tambah jawaban -->
+    <div id="addAnswerModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeAddAnswerModal()">&times;</span>
+        <h3><i class="fas fa-plus"></i> Tambah Jawaban</h3>
+        <input type="text" id="addAnswerText" placeholder="Teks jawaban baru" />
+        <input
+          type="number"
+          id="addAnswerWeight"
+          placeholder="Bobot (0-5)"
+          min="0"
+          max="5"
+          value="1"
+        />
+        <button class="add-btn" onclick="saveAddAnswer()">
+          <i class="fas fa-save"></i> Simpan
+        </button>
+        <button class="back-btn" onclick="closeAddAnswerModal()">
+          <i class="fas fa-times"></i> Batal
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal untuk edit pertanyaan/jawaban -->
+    <div id="editModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeEditModal()">&times;</span>
+        <h3 id="modalTitle"><i class="fas fa-edit"></i> Edit Item</h3>
+        <input type="text" id="editText" placeholder="Edit teks" />
+        <input
+          type="number"
+          id="editWeight"
+          placeholder="Bobot (0-5)"
+          min="0"
+          max="5"
+          style="display: none"
+        />
+        <button class="add-btn" onclick="saveEdit()">
+          <i class="fas fa-save"></i> Simpan
+        </button>
+        <button class="delete-btn" onclick="deleteItemFromModal()">
+          <i class="fas fa-trash"></i> Hapus
+        </button>
+        <button class="back-btn" onclick="closeEditModal()">
+          <i class="fas fa-times"></i> Batal
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal untuk tambah/edit penyakit -->
+    <div id="addDiseaseModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeAddDiseaseModal()">&times;</span>
+        <h3><i class="fas fa-plus"></i> Tambah Penyakit</h3>
+        <input type="text" id="addDiseaseTitle" placeholder="Nama penyakit" />
+        <input
+          type="number"
+          id="addDiseaseMin"
+          placeholder="Min Score"
+          min="0"
+        />
+        <input
+          type="number"
+          id="addDiseaseMax"
+          placeholder="Max Score"
+          min="0"
+        />
+        <textarea id="addDiseaseText" placeholder="Deskripsi..."></textarea>
+        <select id="addDiseaseClass">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="urgent">Urgent</option>
+        </select>
+        <button class="add-btn" onclick="saveAddDisease()">
+          <i class="fas fa-save"></i> Simpan
+        </button>
+        <button class="back-btn" onclick="closeAddDiseaseModal()">
+          <i class="fas fa-times"></i> Batal
+        </button>
+      </div>
+    </div>
+
+    <div id="editDiseaseModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeEditDiseaseModal()">&times;</span>
+        <h3><i class="fas fa-edit"></i> Edit Penyakit</h3>
+        <input type="text" id="editDiseaseTitle" placeholder="Nama penyakit" />
+        <input
+          type="number"
+          id="editDiseaseMin"
+          placeholder="Min Score"
+          min="0"
+        />
+        <input
+          type="number"
+          id="editDiseaseMax"
+          placeholder="Max Score"
+          min="0"
+        />
+        <textarea id="editDiseaseText" placeholder="Deskripsi..."></textarea>
+        <select id="editDiseaseClass">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="urgent">Urgent</option>
+        </select>
+        <button class="add-btn" onclick="saveEditDisease()">
+          <i class="fas fa-save"></i> Simpan
+        </button>
+        <button class="delete-btn" onclick="deleteDiseaseFromModal()">
+          <i class="fas fa-trash"></i> Hapus
+        </button>
+        <button class="back-btn" onclick="closeEditDiseaseModal()">
+          <i class="fas fa-times"></i> Batal
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Data dari localStorage
+      let questions = JSON.parse(localStorage.getItem("questions")) || [];
+      let diseases = JSON.parse(localStorage.getItem("diseasesList")) || [];
+
+      // Sample data jika kosong (untuk test)
+      if (diseases.length === 0) {
+        diseases = [
+          {
+            id: 1,
+            title: "Flu Ringan",
+            minScore: 6,
+            maxScore: 10,
+            text: "Pantau dan istirahatkan bayi.",
+            class: "medium",
+          },
+          {
+            id: 2,
+            title: "Demam Tinggi",
+            minScore: 11,
+            maxScore: 20,
+            text: "Segera ke dokter!",
+            class: "urgent",
+          },
+        ];
+        localStorage.setItem("diseasesList", JSON.stringify(diseases));
+      }
+
+      // Username
+      let currentUsername =
+        localStorage.getItem("currentUsername") || "Unknown";
+      document.getElementById("currentUsername").textContent = currentUsername;
+
+      let editingType = "";
+      let editingQId = null;
+      let editingAId = null;
+      let editingDiseaseId = null;
+      let addQId = null;
+
+      // Render list pertanyaan
+      function renderQuestionList() {
+        const list = document.getElementById("questionList");
+        list.innerHTML = "<h4>Daftar Pertanyaan:</h4>";
+        if (questions.length === 0) {
+          list.innerHTML += "<p>Tidak ada pertanyaan. Tambahkan yang baru!</p>";
+          return;
+        }
+        questions.forEach((q) => {
+          const qDiv = document.createElement("div");
+          qDiv.className = "question-item";
+          qDiv.innerHTML = `
+            <p><strong>ID ${q.id}:</strong> ${q.text}</p>
+            <button class="edit-btn" onclick="editQuestion(${q.id})"><i class="fas fa-edit"></i> Edit Pertanyaan</button>
+            <button class="delete-btn" onclick="deleteQuestion(${q.id})"><i class="fas fa-trash"></i> Hapus Pertanyaan</button>
+            <h5>Jawaban:</h5>
+            <div class="answers-list"></div>
+          `;
+          const answersList = qDiv.querySelector(".answers-list");
+          q.answers.forEach((a) => {
+            const aDiv = document.createElement("div");
+            aDiv.className = "answer-item";
+            aDiv.innerHTML = `
+              <span>${a.text} (Bobot: ${a.weight})</span>
+              <button class="edit-btn" onclick="editAnswer(${q.id}, ${a.id})"><i class="fas fa-edit"></i> Edit</button>
+              <button class="delete-btn" onclick="deleteAnswer(${q.id}, ${a.id})"><i class="fas fa-trash"></i> Hapus</button>
+            `;
+            answersList.appendChild(aDiv);
+          });
+          const addBtn = document.createElement("button");
+          addBtn.className = "add-btn";
+          addBtn.innerHTML = '<i class="fas fa-plus"></i> Tambah Jawaban';
+          addBtn.style.width = "auto";
+          addBtn.style.marginTop = "10px";
+          addBtn.onclick = () => openAddAnswerModal(q.id);
+          qDiv.appendChild(addBtn);
+          list.appendChild(qDiv);
+        });
+      }
+
+      // Render list penyakit
+      function renderDiseaseList() {
+        const list = document.getElementById("diseaseList");
+        list.innerHTML = "<h4>Daftar Penyakit:</h4>";
+        if (diseases.length === 0) {
+          list.innerHTML += "<p>Tidak ada penyakit. Tambahkan yang baru!</p>";
+          return;
+        }
+        diseases.forEach((disease) => {
+          const div = document.createElement("div");
+          div.className = "disease-item";
+          div.innerHTML = `
+            <p><strong>ID ${disease.id}:</strong> ${disease.title}</p>
+            <p>Range Score: ${disease.minScore} - ${
+            disease.maxScore
+          } | Class: ${disease.class}</p>
+            <p>${disease.text.substring(0, 100)}...</p>
+            <button class="edit-btn" onclick="editDisease(${
+              disease.id
+            })"><i class="fas fa-edit"></i> Edit</button>
+            <button class="delete-btn" onclick="deleteDisease(${
+              disease.id
+            })"><i class="fas fa-trash"></i> Hapus</button>
+          `;
+          list.appendChild(div);
+        });
+      }
+
+      // Tambah pertanyaan
+      function addQuestion() {
+        const text = document.getElementById("newQuestionText").value.trim();
+        if (!text) return alert("Isi teks pertanyaan!");
+        const newId =
+          questions.length > 0
+            ? Math.max(...questions.map((q) => q.id)) + 1
+            : 1;
+        questions.push({ id: newId, text: text, answers: [] });
+        localStorage.setItem("questions", JSON.stringify(questions));
+        renderQuestionList();
+        document.getElementById("newQuestionText").value = "";
+        alert("Pertanyaan ditambahkan!");
+      }
+
+      // Tambah penyakit
+      function addDisease() {
+        const title = document.getElementById("newDiseaseTitle").value.trim();
+        const minScore =
+          parseInt(document.getElementById("newDiseaseMin").value) || 0;
+        const maxScore =
+          parseInt(document.getElementById("newDiseaseMax").value) || Infinity;
+        const text = document.getElementById("newDiseaseText").value.trim();
+        const className = document.getElementById("newDiseaseClass").value;
+        if (!title || !text) return alert("Isi nama dan deskripsi!");
+        const newId =
+          diseases.length > 0 ? Math.max(...diseases.map((d) => d.id)) + 1 : 1;
+        diseases.push({
+          id: newId,
+          title,
+          minScore,
+          maxScore,
+          text,
+          class: className,
+        });
+        localStorage.setItem("diseasesList", JSON.stringify(diseases));
+        renderDiseaseList();
+        // Reset form
+        document.getElementById("newDiseaseTitle").value = "";
+        document.getElementById("newDiseaseMin").value = "";
+        document.getElementById("newDiseaseMax").value = "";
+        document.getElementById("newDiseaseText").value = "";
+        alert("Penyakit ditambahkan!");
+      }
+
+      // Edit penyakit
+      function editDisease(id) {
+        editingDiseaseId = id;
+        const disease = diseases.find((d) => d.id === id);
+        document.getElementById("editDiseaseTitle").value = disease.title;
+        document.getElementById("editDiseaseMin").value = disease.minScore;
+        document.getElementById("editDiseaseMax").value = disease.maxScore;
+        document.getElementById("editDiseaseText").value = disease.text;
+        document.getElementById("editDiseaseClass").value = disease.class;
+        document.getElementById("editDiseaseModal").style.display = "block";
+      }
+
+      function saveEditDisease() {
+        if (editingDiseaseId !== null) {
+          const title = document
+            .getElementById("editDiseaseTitle")
+            .value.trim();
+          const minScore =
+            parseInt(document.getElementById("editDiseaseMin").value) || 0;
+          const maxScore =
+            parseInt(document.getElementById("editDiseaseMax").value) ||
+            Infinity;
+          const text = document.getElementById("editDiseaseText").value.trim();
+          const className = document.getElementById("editDiseaseClass").value;
+          if (!title || !text) return alert("Isi nama dan deskripsi!");
+          const disease = diseases.find((d) => d.id === editingDiseaseId);
+          disease.title = title;
+          disease.minScore = minScore;
+          disease.maxScore = maxScore;
+          disease.text = text;
+          disease.class = className;
+          localStorage.setItem("diseasesList", JSON.stringify(diseases));
+          renderDiseaseList();
+          closeEditDiseaseModal();
+          alert("Penyakit diedit!");
+        }
+      }
+
+      function deleteDisease(id) {
+        if (confirm("Yakin hapus penyakit ini?")) {
+          diseases = diseases.filter((d) => d.id !== id);
+          localStorage.setItem("diseasesList", JSON.stringify(diseases));
+          renderDiseaseList();
+          alert("Penyakit dihapus!");
+        }
+      }
+
+      function deleteDiseaseFromModal() {
+        if (editingDiseaseId !== null) {
+          deleteDisease(editingDiseaseId);
+        }
+        closeEditDiseaseModal();
+      }
+
+      function closeEditDiseaseModal() {
+        document.getElementById("editDiseaseModal").style.display = "none";
+        editingDiseaseId = null;
+      }
+
+      // Fungsi jawaban & pertanyaan
+      function openAddAnswerModal(qId) {
+        addQId = qId;
+        document.getElementById("addAnswerText").value = "";
+        document.getElementById("addAnswerWeight").value = "1";
+        document.getElementById("addAnswerModal").style.display = "block";
+      }
+
+      function closeAddAnswerModal() {
+        document.getElementById("addAnswerModal").style.display = "none";
+        addQId = null;
+      }
+
+      function saveAddAnswer() {
+        const text = document.getElementById("addAnswerText").value.trim();
+        const weight =
+          parseInt(document.getElementById("addAnswerWeight").value) || 0;
+        if (!text) return alert("Isi teks jawaban!");
+        const q = questions.find((q) => q.id === addQId);
+        if (q) {
+          const newId =
+            questions.flatMap((qq) => qq.answers.map((a) => a.id)).length > 0
+              ? Math.max(
+                  ...questions.flatMap((qq) => qq.answers.map((a) => a.id))
+                ) + 1
+              : 1;
+          q.answers.push({ id: newId, text, weight });
+          localStorage.setItem("questions", JSON.stringify(questions));
+          renderQuestionList();
+          closeAddAnswerModal();
+          alert("Jawaban ditambahkan!");
+        }
+      }
+
+      function editQuestion(id) {
+        editingType = "question";
+        editingQId = id;
+        editingAId = null;
+        const q = questions.find((q) => q.id === id);
+        document.getElementById("editText").value = q.text;
+        document.getElementById("editWeight").style.display = "none";
+        document.getElementById("modalTitle").textContent = "Edit Pertanyaan";
+        document.getElementById("editModal").style.display = "block";
+      }
+
+      function editAnswer(qId, aId) {
+        editingType = "answer";
+        editingQId = qId;
+        editingAId = aId;
+        const q = questions.find((q) => q.id === qId);
+        const a = q.answers.find((a) => a.id === aId);
+        document.getElementById("editText").value = a.text;
+        document.getElementById("editWeight").value = a.weight;
+        document.getElementById("editWeight").style.display = "block";
+        document.getElementById("modalTitle").textContent = "Edit Jawaban";
+        document.getElementById("editModal").style.display = "block";
+      }
+
+      function saveEdit() {
+        const text = document.getElementById("editText").value.trim();
+        if (!text) return alert("Isi teks!");
+        if (editingType === "question") {
+          const q = questions.find((q) => q.id === editingQId);
+          if (q) q.text = text;
+        } else if (editingType === "answer") {
+          const weight =
+            parseInt(document.getElementById("editWeight").value) || 0;
+          const q = questions.find((q) => q.id === editingQId);
+          const a = q.answers.find((a) => a.id === editingAId);
+          if (a) {
+            a.text = text;
+            a.weight = weight;
+          }
+        }
+        localStorage.setItem("questions", JSON.stringify(questions));
+        renderQuestionList();
+        closeEditModal();
+        alert("Item diedit!");
+      }
+
+      function deleteQuestion(id) {
+        if (
+          confirm("Yakin hapus pertanyaan ini? Semua jawabannya ikut terhapus.")
+        ) {
+          questions = questions.filter((q) => q.id !== id);
+          localStorage.setItem("questions", JSON.stringify(questions));
+          renderQuestionList();
+          alert("Pertanyaan dihapus!");
+        }
+      }
+
+      function deleteAnswer(qId, aId) {
+        if (confirm("Yakin hapus jawaban ini?")) {
+          const q = questions.find((q) => q.id === qId);
+          if (q) {
+            q.answers = q.answers.filter((a) => a.id !== aId);
+            localStorage.setItem("questions", JSON.stringify(questions));
+            renderQuestionList();
+            alert("Jawaban dihapus!");
+          }
+        }
+      }
+
+      function deleteItemFromModal() {
+        if (editingType === "question") {
+          deleteQuestion(editingQId);
+        } else if (editingType === "answer") {
+          deleteAnswer(editingQId, editingAId);
+        }
+        closeEditModal();
+      }
+
+      function closeEditModal() {
+        document.getElementById("editModal").style.display = "none";
+        editingType = "";
+        editingQId = null;
+        editingAId = null;
+        document.getElementById("editText").value = "";
+        document.getElementById("editWeight").value = "";
+      }
+
+      function backToMain() {
+        window.location.href = "index.html";
+      }
+
+      // Load
+      window.onload = function () {
+        renderQuestionList();
+        renderDiseaseList();
+        window.onclick = function (event) {
+          const modals = document.querySelectorAll('[id$="Modal"]');
+          modals.forEach((modal) => {
+            if (event.target === modal) {
+              const modalId = modal.id;
+              if (modalId === "editModal") closeEditModal();
+              else if (modalId === "addAnswerModal") closeAddAnswerModal();
+              else if (modalId === "editDiseaseModal") closeEditDiseaseModal();
+              else if (modalId === "addDiseaseModal") closeAddDiseaseModal();
+            }
+          });
+        };
+      };
+    </script>
+  </body>
+</html>

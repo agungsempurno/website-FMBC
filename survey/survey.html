@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survei Diagnostik Bayi - Akses</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #333;
+      }
+      .login-page {
+        background: #fff;
+        padding: 50px 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 350px;
+      }
+      button {
+        background: #4caf50;
+        color: white;
+        padding: 15px 25px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        margin: 10px 0;
+        font-size: 16px;
+      }
+      button:hover {
+        background: #45a049;
+      }
+      button.admin {
+        background: #ff9800;
+      }
+      button.admin:hover {
+        background: #e68900;
+      }
+      .hidden {
+        display: none;
+      }
+      .survey {
+        max-width: 900px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      .question {
+        margin: 20px 0;
+        padding: 20px;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        background: #fafafa;
+      }
+      input[type="radio"] {
+        margin-right: 10px;
+      }
+      select,
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+      }
+      .back-btn {
+        background: #757575;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 10px;
+        width: auto;
+      }
+      .back-btn:hover {
+        background: #616161;
+      }
+      h2 {
+        color: #333;
+        font-weight: 600;
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+      #result {
+        margin-top: 20px;
+        padding: 25px;
+        border-radius: 12px;
+        text-align: center;
+        background: #e8f5e8;
+      }
+      #result.low {
+        background: #e8f5e8;
+        color: #2e7d32;
+      }
+      #result.medium {
+        background: #fff3e0;
+        color: #ef6c00;
+      }
+      #result.high {
+        background: #ffebee;
+        color: #c62828;
+      }
+      #result.urgent {
+        background: #ffcdd2;
+        color: #b71c1c;
+        border: 2px solid #d32f2f;
+      }
+      i {
+        margin-right: 5px;
+      }
+      .no-questions {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loginPage" class="login-page">
+      <h1><i class="fas fa-baby"></i> Akses Survei Bayi</h1>
+      <button id="visitorBtn"><i class="fas fa-user"></i> Visitor</button>
+      <button id="adminBtn" class="admin">
+        <i class="fas fa-cog"></i> Admin
+      </button>
+    </div>
+
+    <div id="adminAuthPrompt" class="hidden">
+      <h3><i class="fas fa-lock"></i> Login Admin</h3>
+      <div class="auth-form">
+        <input type="text" id="adminUsername" placeholder="Username" />
+        <input type="password" id="adminPassword" placeholder="Password" />
+        <button onclick="checkAdminAuth()">
+          <i class="fas fa-sign-in-alt"></i> Masuk
+        </button>
+      </div>
+      <button class="back-btn" onclick="backToLoginFromPrompt()">
+        <i class="fas fa-times"></i> Batal
+      </button>
+    </div>
+
+    <div id="visitorPage" class="hidden">
+      <div class="survey">
+        <h2><i class="fas fa-stethoscope"></i> Survei Gejala Bayi</h2>
+        <form id="surveyForm">
+          <div id="questionsContainer"></div>
+          <button type="submit">
+            <i class="fas fa-search"></i> Lihat Rekomendasi Penyakit
+          </button>
+        </form>
+        <div id="result" style="display: none"></div>
+        <button class="back-btn" onclick="backToLogin()">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Load data dari localStorage
+      let questions = [];
+      // Daftar penyakit dengan scoring range (load dari localStorage atau default)
+      let diseases = JSON.parse(localStorage.getItem("diseasesList")) || [
+        {
+          id: 1,
+          title: "Bayi Sehat",
+          minScore: 0,
+          maxScore: 5,
+          text: "Bayi tidak menunjukkan gejala serius. Tetap pantau kesehatan secara rutin.",
+          class: "low",
+        },
+        {
+          id: 2,
+          title: "Flu Ringan",
+          minScore: 6,
+          maxScore: 10,
+          text: "Kemungkinan flu biasa. Berikan istirahat, cairan hangat, dan obat demam jika perlu. Konsultasi dokter jika >3 hari.",
+          class: "medium",
+        },
+        {
+          id: 3,
+          title: "Infeksi Saluran Pernapasan",
+          minScore: 11,
+          maxScore: 15,
+          text: "Gejala infeksi ringan. Hindari paparan dingin, gunakan humidifier. Segera periksa ke dokter.",
+          class: "high",
+        },
+        {
+          id: 4,
+          title: "Demam Tinggi",
+          minScore: 16,
+          maxScore: 20,
+          text: "Demam tinggi berisiko. Berikan paracetamol sesuai dosis, kompres air hangat. Segera ke dokter!",
+          class: "urgent",
+        },
+        {
+          id: 5,
+          title: "Darurat (Infeksi Berat)",
+          minScore: 21,
+          maxScore: Infinity,
+          text: "Gejala serius terdeteksi! Segera bawa ke rumah sakit untuk pemeriksaan mendalam.",
+          class: "urgent",
+        },
+      ];
+
+      const DEFAULT_ADMIN = { username: "admin", password: "password" };
+      const DEFAULT_SUPER = { username: "superadmin", password: "super123" };
+
+      // Fungsi login
+      function checkAdminAuth() {
+        const username = document.getElementById("adminUsername").value.trim();
+        const password = document.getElementById("adminPassword").value;
+        if (!username || !password) return alert("Isi username dan password!");
+
+        if (
+          username === DEFAULT_SUPER.username &&
+          password === DEFAULT_SUPER.password
+        ) {
+          localStorage.setItem("currentUsername", username);
+          window.location.href = "devdashboard.html";
+          return;
+        } else if (
+          username === DEFAULT_ADMIN.username &&
+          password === DEFAULT_ADMIN.password
+        ) {
+          localStorage.setItem("currentUsername", username);
+          window.location.href = "admin.html";
+          return;
+        } else {
+          alert("Username/password salah!");
+        }
+      }
+
+      // Fungsi tombol
+      function showVisitor() {
+        document.getElementById("loginPage").classList.add("hidden");
+        document.getElementById("visitorPage").classList.remove("hidden");
+        renderSurvey();
+      }
+
+      function promptAdminAuth() {
+        document.getElementById("loginPage").classList.add("hidden");
+        document.getElementById("adminAuthPrompt").classList.remove("hidden");
+      }
+
+      function backToLoginFromPrompt() {
+        document.getElementById("adminAuthPrompt").classList.add("hidden");
+        document.getElementById("loginPage").classList.remove("hidden");
+      }
+
+      function backToLogin() {
+        document.getElementById("visitorPage").classList.add("hidden");
+        document.getElementById("loginPage").classList.remove("hidden");
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("result").style.display = "none";
+      }
+
+      // Render survei
+      function renderSurvey() {
+        const container = document.getElementById("questionsContainer");
+        container.innerHTML = "";
+        questions = JSON.parse(localStorage.getItem("questions")) || [];
+        if (questions.length === 0) {
+          container.innerHTML =
+            '<div class="no-questions">Tidak ada pertanyaan tersedia. Hubungi admin untuk menambahkan.</div>';
+          return;
+        }
+        questions.forEach((q) => {
+          const div = document.createElement("div");
+          div.className = "question";
+          div.innerHTML = `<p><i class="fas fa-question-circle"></i> ${q.text}</p>`;
+          q.answers.forEach((answer) => {
+            div.innerHTML += `<label><input type="radio" name="q${q.id}" value="${answer.id}" data-weight="${answer.weight}"> ${answer.text}</label><br>`;
+          });
+          container.appendChild(div);
+        });
+      }
+
+      document
+        .getElementById("surveyForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          let totalScore = 0;
+          questions.forEach((q) => {
+            const selected = document.querySelector(
+              `input[name="q${q.id}"]:checked`
+            );
+            if (selected) totalScore += parseInt(selected.dataset.weight);
+          });
+          // Cari penyakit berdasarkan range score
+          const disease =
+            diseases.find(
+              (d) => totalScore >= d.minScore && totalScore <= d.maxScore
+            ) || diseases[0];
+          document.getElementById("result").innerHTML = `
+            <div class="${disease.class}">
+              <h3><i class="fas fa-heartbeat"></i> ${disease.title}</h3>
+              <p>${disease.text}</p>
+              <p><strong>Skor Total: ${totalScore}</strong></p>
+            </div>
+          `;
+          document.getElementById("result").className = disease.class;
+          document.getElementById("result").style.display = "block";
+        });
+
+      // Event listeners
+      window.addEventListener("load", function () {
+        document
+          .getElementById("visitorBtn")
+          .addEventListener("click", showVisitor);
+        document
+          .getElementById("adminBtn")
+          .addEventListener("click", promptAdminAuth);
+        console.log("Loaded—tombol ready!");
+      });
+    </script>
+  </body>
+</html>
