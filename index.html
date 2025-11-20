@@ -23,6 +23,13 @@
     />
 
     <style>
+      html,
+      body {
+        overflow-x: hidden; /* Larang scroll horizontal */
+        width: 100%;
+        max-width: 100%;
+      }
+
       :root {
         --terracotta: #e2725b;
         --soft-terracotta: #fdf6f0;
@@ -36,6 +43,7 @@
         background-color: var(--soft-terracotta);
         color: var(--text-dark);
         scroll-behavior: smooth;
+        position: relative;
       }
 
       /* Navbar */
@@ -524,6 +532,9 @@
               <a class="nav-link" href="#home">Beranda</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#about">Tentang Kami</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#facility">Fasilitas</a>
             </li>
             <li class="nav-item">
@@ -537,7 +548,7 @@
       </div>
     </nav>
 
-    <!-- Promotion Popup - Hanya Gambar (seperti anakode.id) -->
+    <!-- Promotion Popup -->
     <div
       id="promoPopup"
       class="position-fixed top-0 start-0 w-100 h-100 d-none"
@@ -558,7 +569,7 @@
           class="position-absolute bg-transparent border-0 text-black fs-1 fw-bold"
           style="
             top: 10px;
-            right: 10px;
+            right: 20px;
             z-index: 10;
             text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
             line-height: 1;
@@ -566,7 +577,7 @@
             outline: none;
             cursor: pointer;
           "
-          onmouseover="this.style.transform='scale(2)'"
+          onmouseover="this.style.transform='scale(1.3)'"
           onmouseout="this.style.transform='scale(1)'"
         >
           ×
@@ -593,6 +604,208 @@
         <a href="https://wa.me/628128415338" class="btn btn-main"
           >Pesan Sekarang</a
         >
+      </div>
+    </section>
+
+    <!-- Company Profile Section – Versi Terbaru 2025 + Fix Mobile Scroll -->
+    <section
+      id="about"
+      class="fade-in py-5 py-md-6"
+      style="background-color: #fff; overflow: hidden"
+    >
+      <div class="container">
+        <!-- HEADLINE -->
+        <div class="text-center mb-5">
+          <h2 class="section-title display-5 fw-bold">Tentang Kami</h2>
+          <p class="subtitle lead text-muted mx-auto" style="max-width: 650px">
+            Klinik perawatan Ibu & Anak modern dengan sentuhan hangat dan
+            standar medis terbaik.
+          </p>
+        </div>
+
+        <div class="row align-items-center gy-5">
+          <!-- LEFT TEXT -->
+          <div class="col-lg-6 order-lg-1 order-1">
+            <h3
+              class="fw-bold mb-3"
+              style="color: var(--terracotta); font-size: 1.8rem"
+            >
+              Layanan Premium untuk Ibu & Buah Hati
+            </h3>
+
+            <p
+              class="text-muted mb-3"
+              style="line-height: 1.8; font-size: 1.05rem"
+            >
+              Berdiri sejak 2020, Farah Mom & Baby Care hadir untuk memenuhi
+              kebutuhan perawatan ibu dan anak yang aman, nyaman, dan berbasis
+              medis.
+            </p>
+
+            <p
+              class="text-muted mb-4"
+              style="line-height: 1.8; font-size: 1.05rem"
+            >
+              Dengan tim bidan bersertifikat, fasilitas modern, serta perawatan
+              yang penuh ketenangan, kami telah dipercaya ribuan keluarga di
+              Bogor dan Jabodetabek.
+            </p>
+
+            <!-- STAT BOX -->
+            <div class="row g-4 mt-4 text-center">
+              <div class="col-4 col-md-4">
+                <h2
+                  class="fw-bold"
+                  style="color: var(--terracotta); font-size: 2.2rem; margin: 0"
+                >
+                  5+
+                </h2>
+                <p class="text-muted small mb-0">Tahun Berpengalaman</p>
+              </div>
+              <div class="col-4 col-md-4">
+                <h2
+                  class="fw-bold"
+                  style="color: var(--terracotta); font-size: 2.2rem; margin: 0"
+                >
+                  400+
+                </h2>
+                <p class="text-muted small mb-0">Klien per Bulan</p>
+              </div>
+              <div class="col-4 col-md-4">
+                <h2
+                  class="fw-bold"
+                  style="
+                    color: var(--terracotta);
+                    font-size: 1.6rem;
+                    margin: 0;
+                    line-height: 1.2;
+                  "
+                >
+                  Bogor dan Depok
+                </h2>
+                <p class="text-muted small mb-0">Jangkauan Homecare</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT PHOTO – Fix overflow -->
+          <div class="col-lg-6 order-lg-2 order-2 text-center px-0 px-md-3">
+            <img
+              src="asset/foto_about.JPG"
+              alt="Klinik FMBC"
+              class="img-fluid rounded-4 shadow-lg"
+              style="max-width: 100%; height: auto; object-fit: cover"
+              onerror="this.src='asset/parallax.JPG'"
+            />
+          </div>
+        </div>
+
+        <!-- VISI & MISI – 100% SAMA DENGAN PDF TERBARU -->
+        <div class="row g-4 mt-5">
+          <!-- VISI -->
+          <div class="col-md-6">
+            <div
+              class="p-4 p-md-5 text-center rounded-4 h-100 d-flex flex-column justify-content-center"
+              style="
+                background: #fdf6f0;
+                border: 1px solid rgba(226, 114, 91, 0.1);
+                box-shadow: 0 10px 25px rgba(226, 114, 91, 0.08);
+              "
+            >
+              <h4
+                class="fw-bold mb-3"
+                style="color: var(--terracotta); font-size: 1.4rem"
+              >
+                Visi 2035
+              </h4>
+              <p class="text-muted" style="line-height: 1.8; font-size: 1rem">
+                Menjadi pilihan utama dalam layanan perawatan ibu dan anak yang
+                berfokus pada pengalaman positif, solutif, dan kualitas bagi
+                keluarga di Indonesia pada tahun 2035.
+              </p>
+            </div>
+          </div>
+
+          <!-- MISI -->
+          <div class="col-md-6">
+            <div
+              class="p-4 p-md-5 rounded-4 h-100"
+              style="
+                background: white;
+                border: 1px solid rgba(226, 114, 91, 0.12);
+                box-shadow: 0 10px 25px rgba(226, 114, 91, 0.07);
+              "
+            >
+              <h4
+                class="fw-bold mb-4"
+                style="color: var(--terracotta); font-size: 1.4rem"
+              >
+                Misi Kami
+              </h4>
+              <ul
+                class="list-unstyled text-muted"
+                style="line-height: 2; font-size: 0.98rem"
+              >
+                <li class="mb-3">
+                  ✔ Menyediakan layanan perawatan ibu dan anak dengan standar
+                  kualitas tertinggi, mengutamakan keamanan, kenyamanan, dan
+                  kesehatan jangka panjang.
+                </li>
+                <li class="mb-3">
+                  ✔ Menggunakan peralatan yang aman dan terpercaya untuk
+                  mendukung perawatan yang efektif dan optimal.
+                </li>
+                <li class="mb-3">
+                  ✔ Fokus pada kenyamanan dan kepuasan klien dan keluarga dengan
+                  memberikan pengalaman layanan yang penuh perhatian dan empati.
+                </li>
+                <li class="mb-3">
+                  ✔ Berperan aktif dalam meningkatkan kesehatan ibu dan anak
+                  melalui program edukasi, pemberdayaan, dan kampanye kesehatan
+                  yang dapat diakses secara luas.
+                </li>
+                <li class="mb-3">
+                  ✔ Membangun dan mengembangkan tim profesional yang kompeten,
+                  berintegritas, serta memiliki komitmen tinggi terhadap
+                  pelayanan dan perkembangan kesehatan ibu dan anak.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Proof -->
+        <div class="text-center mt-5">
+          <div
+            class="bg-white rounded-4 shadow-sm p-4 d-inline-block w-100"
+            style="max-width: 100%"
+          >
+            <p class="mb-3 text-muted"><strong>Dipercaya oleh:</strong></p>
+            <div
+              class="d-flex flex-wrap justify-content-center gap-4 align-items-center"
+            >
+              <div class="text-center">
+                <i class="fab fa-instagram text-terracotta fa-2x mb-2"></i>
+                <p class="small mb-0 text-muted">15K+ Followers</p>
+              </div>
+              <div class="vr d-none d-md-block" style="background: #ddd"></div>
+              <div class="text-center">
+                <i class="fas fa-star text-terracotta fa-2x mb-2"></i>
+                <p class="small mb-0 text-muted">Google Rating 4.9/5.0</p>
+              </div>
+              <div class="vr d-none d-md-block" style="background: #ddd"></div>
+              <div class="text-center">
+                <i class="fas fa-certificate text-terracotta fa-2x mb-2"></i>
+                <p class="small mb-0 text-muted">Terapis Bersertifikat</p>
+              </div>
+              <div class="vr d-none d-md-block" style="background: #ddd"></div>
+              <div class="text-center">
+                <i class="fas fa-handshake text-terracotta fa-2x mb-2"></i>
+                <p class="small mb-0 text-muted">Trusted Brand Partners</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -720,79 +933,117 @@
       </div>
     </section>
 
-    <!-- Our Services - Cards with Links to Detailed Page -->
+    <!-- Our Services -->
     <section id="services" class="fade-in">
       <h2 class="section-title">Layanan Kami</h2>
       <p class="subtitle">
         Perawatan profesional untuk ibu dan bayi dengan sentuhan kasih sayang
       </p>
       <div class="container">
-        <div class="row">
+        <div class="row g-4 justify-content-center">
           <!-- Card 1: Baby Treatment -->
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card h-100">
-              <i class="fa-solid fa-baby text-terracotta"></i>
-              <div class="card-body">
-                <h5 class="card-title">Baby Treatment</h5>
-                <p class="card-text">
-                  Perawatan khusus untuk bayi 0-12 bulan, termasuk massage, spa,
-                  dan body mask untuk relaksasi & perkembangan motorik.
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 d-flex flex-column">
+              <div class="text-center mt-3">
+                <i
+                  class="fa-solid fa-baby text-terracotta"
+                  style="font-size: 3rem"
+                ></i>
+              </div>
+              <div class="card-body d-flex flex-column flex-grow-1">
+                <h5 class="card-title text-center">Baby Treatment</h5>
+                <p class="card-text flex-grow-1">
+                  Perawatan khusus bayi 0–12 bulan: Baby Massage, Baby Spa, Kids
+                  Bubble Bath, Body Mask, Tindik Telinga & Hair Cut untuk
+                  relaksasi & perkembangan motorik optimal.
                 </p>
-                <a
-                  href="our services.html#baby-treatment"
-                  class="btn btn-service"
-                  >Lihat Detail</a
-                >
+                <div class="mt-auto text-center">
+                  <a
+                    href="our services.html#baby-treatment"
+                    class="btn btn-service w-100"
+                    >Lihat Detail</a
+                  >
+                </div>
               </div>
             </div>
           </div>
+
           <!-- Card 2: Kids Treatment -->
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card h-100">
-              <i class="fa-solid fa-child text-terracotta"></i>
-              <div class="card-body">
-                <h5 class="card-title">Kids Treatment</h5>
-                <p class="card-text">
-                  Layanan untuk anak 1-10 tahun, fokus pada pijatan lembut,
-                  medical massage, dan bubble bath untuk kesehatan &
-                  kreativitas.
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 d-flex flex-column">
+              <div class="text-center mt-3">
+                <i
+                  class="fa-solid fa-child text-terracotta"
+                  style="font-size: 3rem"
+                ></i>
+              </div>
+              <div class="card-body d-flex flex-column flex-grow-1">
+                <h5 class="card-title text-center">Kids Treatment</h5>
+                <p class="card-text flex-grow-1">
+                  Layanan anak 1–10 tahun: Pediatric Medical Massage, Bubble
+                  Bath, Body Mask — menjaga kesehatan & kreativitas si kecil.
                 </p>
-                <a
-                  href="Our Services.html#kids-treatment"
-                  class="btn btn-service"
-                  >Lihat Detail</a
-                >
+                <div class="mt-auto text-center">
+                  <a
+                    href="Our Services.html#kids-treatment"
+                    class="btn btn-service w-100"
+                    >Lihat Detail</a
+                  >
+                </div>
               </div>
             </div>
           </div>
-          <!-- Card 3: Mom Treatment -->
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card h-100">
-              <i class="fa-solid fa-person-pregnant"></i>
-              <div class="card-body">
-                <h5 class="card-title">Mom Treatment</h5>
-                <p class="card-text">treatment untuk bunda</p>
-                <a
-                  href="Our Services.html#mom-treatment"
-                  class="btn btn-service"
-                  >Lihat Detail</a
-                >
+
+          <!-- Card 3: Mom Treatment – Teks sesuai PDF hal.06 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 d-flex flex-column">
+              <div class="text-center mt-3">
+                <i
+                  class="fa-solid fa-person-pregnant text-terracotta"
+                  style="font-size: 3rem"
+                ></i>
+              </div>
+              <div class="card-body d-flex flex-column flex-grow-1">
+                <h5 class="card-title text-center">Mom Treatment</h5>
+                <p class="card-text flex-grow-1">
+                  Lactation Massage, Postpartum Massage, Totok Wajah & Masker
+                  Wajah, Body Scrub — pemulihan pasca melahirkan yang nyaman &
+                  penuh kasih sayang.
+                </p>
+                <div class="mt-auto text-center">
+                  <a
+                    href="Our Services.html#mom-treatment"
+                    class="btn btn-service w-100"
+                    >Lihat Detail</a
+                  >
+                </div>
               </div>
             </div>
           </div>
-          <!-- Card 4: Kelas Yoga -->
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card h-100">
-              <i class="fa-solid fa-person-running text-terracotta"></i>
-              <div class="card-body">
-                <h5 class="card-title">Kelas Yoga</h5>
-                <p class="card-text">
-                  Senam hamil & prenatal gentle yoga (13-41 minggu) untuk
-                  persiapan persalinan, private atau grup.
+
+          <!-- Card 4: Kelas Yoga (Pregnancy Treatment) -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 d-flex flex-column">
+              <div class="text-center mt-3">
+                <i
+                  class="fa-solid fa-person-running text-terracotta"
+                  style="font-size: 3rem"
+                ></i>
+              </div>
+              <div class="card-body d-flex flex-column flex-grow-1">
+                <h5 class="card-title text-center">Pregnancy Treatment</h5>
+                <p class="card-text flex-grow-1">
+                  Pregnancy Massage, Prenatal Gentle Yoga, Senam Hamil, Totok
+                  Wajah & Body Scrub — persiapan persalinan yang sehat &
+                  menyenangkan (13–41 minggu).
                 </p>
-                <a href="Our Services.html#kelas-yoga" class="btn btn-service"
-                  >Lihat Detail</a
-                >
+                <div class="mt-auto text-center">
+                  <a
+                    href="Our Services.html#kelas-yoga"
+                    class="btn btn-service w-100"
+                    >Lihat Detail</a
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -1028,25 +1279,7 @@
       <a href="https://wa.me/628128415338" class="wa" target="_blank"
         ><i class="fab fa-whatsapp"></i
       ></a>
-      <a href="tel:+628128415338" class="call"
-        ><i class="fa-solid fa-phone"></i
-      ></a>
     </div>
-
-    <script>
-      // Muncul otomatis setelah 4 detik
-      setTimeout(function () {
-        document.getElementById("promoPopup").classList.remove("d-none");
-      }, 1000);
-
-      document
-        .getElementById("promoPopup")
-        .addEventListener("click", function (e) {
-          if (e.target === this) {
-            this.classList.add("d-none");
-          }
-        });
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -1068,6 +1301,19 @@
         { threshold: 0.2 }
       );
       fadeEls.forEach((el) => observer.observe(el));
+
+      // Muncul otomatis setelah 4 detik
+      setTimeout(function () {
+        document.getElementById("promoPopup").classList.remove("d-none");
+      }, 1000);
+
+      document
+        .getElementById("promoPopup")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            this.classList.add("d-none");
+          }
+        });
     </script>
   </body>
 </html>
