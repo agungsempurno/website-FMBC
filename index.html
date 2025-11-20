@@ -441,6 +441,67 @@
           height: 35px;
         }
       }
+
+      /* Hover Effects untuk Footer */
+      .footer-link {
+        color: var(--warm-gray);
+        text-decoration: none;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+      .footer-link:hover {
+        color: var(--terracotta) !important;
+        padding-left: 8px;
+      }
+      .footer-link::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: var(--terracotta);
+        transition: width 0.3s ease;
+      }
+      .footer-link:hover::before {
+        width: 30px;
+      }
+
+      .footer-list-item {
+        color: var(--warm-gray);
+        transition: all 0.3s ease;
+      }
+      .footer-list-item:hover {
+        color: var(--terracotta);
+        padding-left: 6px;
+      }
+
+      /* Hover kolom sedikit naik */
+      .footer-col {
+        transition: transform 0.3s ease;
+      }
+      .footer-col:hover {
+        transform: translateY(-5px);
+      }
+
+      /* Sosmed icon hover */
+      .text-terracotta.transition-all {
+        transition: all 0.3s ease;
+      }
+      .text-terracotta.transition-all:hover {
+        color: #d95a40 !important;
+        transform: scale(1.25) rotate(8deg);
+      }
+
+      /* Tombol WA di footer */
+      .wa-footer-btn {
+        transition: all 0.3s ease;
+      }
+      .wa-footer-btn:hover {
+        background: #d95a40 !important;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(226, 114, 91, 0.3);
+      }
     </style>
   </head>
 
@@ -470,11 +531,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#location">Lokasi</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="survey/survey.html"
-                >Survey gejala bayi</a
-              >
             </li>
           </ul>
         </div>
@@ -569,7 +625,7 @@
               <div class="accordion-body">
                 Didesain dengan suasana tenang dan aroma relaksasi yang
                 menenangkan, Mom Room di Farah Mom & Baby Care menjadi tempat
-                terbaik untuk melepas penat...
+                terbaik untuk melepas penat.
                 <img
                   src="asset/mom_treatment_room.jpg"
                   alt="Ruang Perawatan Ibu"
@@ -598,7 +654,7 @@
             >
               <div class="accordion-body">
                 Dirancang dengan suasana hangat dan tenang, menciptakan
-                pengalaman pijat yang nyaman...
+                pengalaman pijat yang nyaman.
                 <img src="asset/baby_spa.jpg" alt="Area Baby Spa" />
               </div>
             </div>
@@ -819,6 +875,153 @@
         </div>
       </div>
     </section>
+
+    <!-- Footer -->
+    <footer style="margin-top: 5rem">
+      <div class="container">
+        <div class="row gy-4">
+          <!-- Logo & Deskripsi -->
+          <div class="col-lg-4 col-md-6">
+            <div class="d-flex align-items-center mb-3">
+              <img
+                src="asset/logo.png"
+                alt="Farah Mom & Baby Care"
+                height="45"
+              />
+            </div>
+            <p
+              class="text-muted small"
+              style="color: var(--warm-gray) !important"
+            >
+              Sentuhan lembut dan kasih sayang hangat untuk ibu & bayi
+              tercinta.<br />
+              Perawatan profesional dengan hati di jantung Kota Bogor.
+            </p>
+            <div class="d-flex gap-3 mt-3">
+              <a
+                href="https://www.instagram.com/fmbc.id/"
+                class="text-terracotta fs-4 transition-all"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="mailto:homecarebidanfarah@gmail.com"
+                class="text-terracotta fs-4 transition-all"
+                ><i class="fas fa-envelope"></i
+              ></a>
+              <a
+                href="https://www.tiktok.com/@fmbc.id"
+                class="text-terracotta fs-4 transition-all"
+                ><i class="fab fa-tiktok"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-lg-2 col-md-6 col-sm-6 footer-col">
+            <h6 class="fw-bold text-terracotta mb-3">Menu</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#home" class="footer-link">Beranda</a>
+              </li>
+              <li class="mb-2">
+                <a href="#facility" class="footer-link">Fasilitas</a>
+              </li>
+              <li class="mb-2">
+                <a href="#services" class="footer-link">Treatment</a>
+              </li>
+              <li class="mb-2">
+                <a href="#location" class="footer-link">Lokasi</a>
+              </li>
+              <li class="mb-2">
+                <a href="survey/survey.html" class="footer-link"
+                  >Survey Gejala</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Layanan -->
+          <div class="col-lg-3 col-md-6 col-sm-6 footer-col">
+            <h6 class="fw-bold text-terracotta mb-3">Layanan Kami</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2">
+                <a href="our services.html#baby-treatment" class="footer-link"
+                  >• Baby Treatment</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="Our Services.html#kids-treatment" class="footer-link"
+                  >• Kids Treatment</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="Our Services.html#mom-treatment" class="footer-link"
+                  >• Mom Treatment</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="Our Services.html#kelas-yoga" class="footer-link"
+                  >• Kelas Prenatal Yoga</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="https://wa.me/628128415338" class="footer-link"
+                  >• Home Treatment (Langsung chat dmin)</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Kontak -->
+          <div class="col-lg-3 col-md-6 footer-col">
+            <h6 class="fw-bold text-terracotta mb-3">Hubungi Kami</h6>
+
+            <p class="small mb-2" style="color: var(--warm-gray)">
+              <i class="fas fa-map-marker-alt text-terracotta me-2"></i>
+              Jl. Pandu Raya No.3, Tegal Gundil<br />Bogor Utara, Kota Bogor
+              16107
+            </p>
+
+            <p class="small mb-2" style="color: var(--warm-gray)">
+              <i class="fas fa-phone text-terracotta me-2"></i> +62 812-8415-338
+            </p>
+
+            <!-- Baris Email (baru) -->
+            <p class="small mb-2" style="color: var(--warm-gray)">
+              <i class="fas fa-envelope text-terracotta me-2"></i>
+              <a
+                href="mailto:homecarebidanfarah@gmail.com"
+                class="text-decoration-none"
+                style="color: var(--warm-gray); transition: color 0.3s"
+              >
+                homecarebidanfarah@gmail.com
+              </a>
+            </p>
+
+            <p class="small mb-3" style="color: var(--warm-gray)">
+              <i class="fab fa-whatsapp text-terracotta me-2"></i> Chat Langsung
+            </p>
+
+            <a
+              href="https://wa.me/628128415338"
+              class="btn btn-main btn-sm wa-footer-btn"
+            >
+              <i class="fab fa-whatsapp me-1"></i> Pesan Sekarang
+            </a>
+          </div>
+        </div>
+
+        <hr class="my-4" style="border-color: rgba(226, 114, 91, 0.2)" />
+
+        <!-- Copyright di tengah (responsive) -->
+        <div
+          class="text-center small"
+          style="color: var(--warm-gray); padding-bottom: 1rem"
+        >
+          © 2025 Farah Mom & Baby Care. All rights reserved.<br />
+        </div>
+      </div>
+    </footer>
 
     <!-- Floating Buttons -->
     <div class="float-btn">
