@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang Kami - Farah Mom & Baby Care</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <style>
+      :root {
+        --cream: #faf7f3;
+        --beige: #f0e9e0;
+        --brown: #8b6b4a;
+        --orange: #d4a89c;
+        --darkbrown: #6b4f3f;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--cream);
+        color: var(--darkbrown);
+        line-height: 1.8;
+        padding-top: 90px; /* biar konten nggak ketutup navbar */
+      }
+
+      /* NAVBAR CANTIK */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 4px 20px rgba(107, 79, 63, 0.1);
+        padding: 15px 0;
+        transition: all 0.3s ease;
+      }
+      .navbar.scrolled {
+        background: white !important;
+        padding: 10px 0;
+        box-shadow: 0 8px 30px rgba(107, 79, 63, 0.15);
+      }
+      .navbar-brand img {
+        height: 50px;
+        transition: all 0.3s;
+      }
+      .nav-link {
+        color: var(--darkbrown) !important;
+        font-weight: 500;
+        margin: 0 15px;
+        position: relative;
+        transition: all 0.3s;
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--brown) !important;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -6px;
+        left: 50%;
+        background: var(--orange);
+        transition: all 0.3s;
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+        left: 0;
+      }
+      @media (max-width: 991px) {
+        .navbar-collapse {
+          background: white;
+          margin-top: 15px;
+          border-radius: 15px;
+          padding: 20px;
+        }
+        .nav-link {
+          text-align: center;
+          margin: 10px 0;
+        }
+      }
+
+      /*  */
+
+      .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 30px;
+      }
+
+      header {
+        text-align: center;
+        padding: 100px 20px 80px;
+        background: white;
+      }
+      .logo {
+        height: 80px;
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 60px;
+        color: var(--darkbrown);
+        margin-bottom: 10px;
+      }
+      .tagline {
+        font-size: 32px;
+        font-weight: 600;
+        color: var(--brown);
+      }
+
+      section {
+        padding: 120px 0;
+        position: relative;
+      }
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 52px;
+        text-align: center;
+        color: var(--darkbrown);
+        margin-bottom: 70px;
+        position: relative;
+      }
+      h2::after {
+        content: "";
+        width: 120px;
+        height: 4px;
+        background: var(--orange);
+        display: block;
+        margin: 20px auto 0;
+        border-radius: 2px;
+      }
+
+      .intro-text {
+        text-align: center;
+        font-size: 20px;
+        max-width: 900px;
+        margin: 0 auto 80px;
+      }
+
+      /* Visi Misi */
+      .vm-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 50px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .vm-card {
+        background: white;
+        padding: 60px 50px;
+        border-radius: 30px;
+        box-shadow: 0 20px 50px rgba(107, 79, 63, 0.1);
+        text-align: center;
+      }
+      .vm-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 36px;
+        color: var(--brown);
+        margin-bottom: 30px;
+      }
+
+      /* Timeline dengan garis vertical */
+      .timeline-vertical {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .timeline-vertical::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: var(--orange);
+        transform: translateX(-50%);
+      }
+      .tl-v-item {
+        display: flex;
+        align-items: center;
+        margin: 80px 0;
+        position: relative;
+      }
+      .tl-v-item:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+      .tl-v-year {
+        background: var(--brown);
+        color: white;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: bold;
+        z-index: 1;
+      }
+      .tl-v-content {
+        background: white;
+        padding: 40px;
+        border-radius: 30px;
+        box-shadow: 0 15px40px rgba(0, 0, 0, 0.08);
+        max-width: 400px;
+        margin: 0 40px;
+      }
+
+      /* SEGMENTASI DEMOGRAFIS (baru!) */
+      .segmentasi-section {
+        background: white;
+        padding: 90px 50px;
+        border-radius: 40px;
+        box-shadow: 0 25px 60px rgba(107, 79, 63, 0.15);
+        text-align: center;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .pie-wrapper {
+        position: relative;
+        width: 280px;
+        height: 280px;
+        margin: 40px auto;
+      }
+      .pie-chart {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        background: conic-gradient(var(--brown) 0% 92%, #e8d9c9 92% 100%);
+      }
+      .pie-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+      .pie-center big {
+        font-size: 48px;
+        color: var(--brown);
+      }
+      .pie-label-woman {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--brown);
+        color: white;
+        padding: 10px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+      }
+      .pie-label-man {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background: #e8d9c9;
+        color: var(--brown);
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .segmentasi-list {
+        margin-top: 50px;
+        font-size: 19px;
+        line-height: 2.2;
+      }
+      .segmentasi-list li {
+        margin: 12px 0;
+      }
+      .segmentasi-list strong {
+        color: var(--brown);
+      }
+
+      /* Therapist */
+      .treatment-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 40px;
+        margin-top: 60px;
+      }
+      .treatment-card {
+        background: white;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(107, 79, 63, 0.12);
+        text-align: center;
+      }
+      .treatment-card img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+      }
+      .treatment-pill {
+        background: var(--brown);
+        color: white;
+        padding: 15px 40px;
+        border-radius: 50px;
+        display: inline-block;
+        margin: 30px 0 20px;
+        font-weight: 600;
+      }
+
+      /* Influencer */
+      .influencer-pills {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        max-width: 1000px;
+        margin: 50px auto;
+      }
+      .pill {
+        background: white;
+        padding: 18px 30px;
+        border-radius: 50px;
+        text-align: center;
+        font-weight: 600;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Contact */
+      .contact {
+        background: var(--brown);
+        color: white;
+        text-align: center;
+        padding: 120px 20px;
+        border-radius: 50px 50px 0 0;
+        margin-top: 100px;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 50px;
+        max-width: 1100px;
+        margin: 60px auto 0;
+      }
+      .contact-item h4 {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 12px 40px;
+        border-radius: 50px;
+        display: inline-block;
+        margin-bottom: 15px;
+      }
+      .contact-item p {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 30px;
+      }
+      header {
+        text-align: center;
+        padding: 80px 20px 60px;
+        background: white;
+      }
+      .logo-header {
+        height: 80px;
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 60px;
+        color: var(--darkbrown);
+        margin-bottom: 10px;
+      }
+      .tagline {
+        font-size: 32px;
+        font-weight: 600;
+        color: var(--brown);
+      }
+
+      section {
+        padding: 120px 0;
+        position: relative;
+      }
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 52px;
+        text-align: center;
+        color: var(--darkbrown);
+        margin-bottom: 70px;
+        position: relative;
+      }
+      h2::after {
+        content: "";
+        width: 120px;
+        height: 4px;
+        background: var(--orange);
+        display: block;
+        margin: 20px auto 0;
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="https://i.ibb.co.com/Hr5C3tX/logo-farah.png"
+            alt="Farah Mom & Baby Care"
+            height="50"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#home">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Tentang Kami</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#facility">Fasilitas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Our Services.html">Layanan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#location">Lokasi</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <img
+        src="https://i.ibb.co.com/Hr5C3tX/logo-farah.png"
+        alt="Farah Mom & Baby Care"
+        class="logo"
+      />
+      <h1>Tentang Kami</h1>
+      <div class="tagline">
+        No. 1 Perawatan Ibu & Anak Terbaik di Kota Bogor
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Intro -->
+      <section style="position: relative">
+        <div class="intro-text">
+          <p>
+            <strong>Farah Mom & Baby Care</strong> hadir sebagai pilihan utama
+            layanan perawatan ibu dan anak di Indonesia.<br />
+            Dengan menyediakan perawatan berkualitas tinggi — baik di klinik
+            maupun di rumah — kami didukung oleh tim bidan bersertifikat dan
+            terapis profesional yang selalu mengedepankan kenyamanan keluarga.
+          </p>
+          <p style="font-size: 24px; margin-top: 50px; color: var(--brown)">
+            Saat ini kami melayani
+            <strong>400+ bunda & buah hati setiap bulannya</strong> di wilayah
+            Bogor, Depok, dan Tangerang.
+          </p>
+        </div>
+      </section>
+
+      <!-- Visi & Misi -->
+      <section>
+        <h2>Visi & Misi Kami</h2>
+        <div class="vm-grid">
+          <div class="vm-card">
+            <h3>VISI 2035</h3>
+            <p>
+              Menjadi pilihan utama dalam layanan perawatan ibu dan anak yang
+              berfokus pada pengalaman positif, solutif, dan kualitas bagi
+              keluarga di Indonesia pada tahun 2035.
+            </p>
+          </div>
+          <div class="vm-card">
+            <h3>MISI KAMI</h3>
+            <ul style="text-align: left; font-size: 18px; padding-left: 30px">
+              <li>
+                Menyediakan layanan dengan standar kualitas tertinggi,
+                mengutamakan keamanan, kenyamanan, dan kesehatan jangka panjang
+              </li>
+              <li>
+                Menggunakan peralatan aman & terpercaya + bahan herbal alami
+              </li>
+              <li>Fokus pada kepuasan klien dengan empati & perhatian</li>
+              <li>
+                Meningkatkan kesehatan ibu & anak melalui edukasi dan kampanye
+              </li>
+              <li>Membangun tim profesional berintegritas tinggi</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Perjalanan Kami (dengan garis vertical) -->
+      <section style="background: #fff">
+        <h2>Perjalanan Kami</h2>
+        <div class="timeline-vertical">
+          <div class="tl-v-item">
+            <div class="tl-v-year">2020</div>
+            <div class="tl-v-content">
+              Bermula dari keresahan klien pada masa pandemi, FMBC hadir dengan
+              layanan home treatment untuk ibu dan anak.
+            </div>
+          </div>
+          <div class="tl-v-item">
+            <div class="tl-v-year">2021</div>
+            <div class="tl-v-content">
+              Berkembang pesat melalui media sosial & inovasi layanan.
+            </div>
+          </div>
+          <div class="tl-v-item">
+            <div class="tl-v-year">2022</div>
+            <div class="tl-v-content">
+              Ekspansi membuka klinik strategis + kolaborasi brand & influencer.
+            </div>
+          </div>
+          <div class="tl-v-item">
+            <div class="tl-v-year">2023</div>
+            <div class="tl-v-content">
+              Aktif di berbagai event ibu & anak, melayani ribuan klien di
+              wilayah Bogor dan Depok.
+            </div>
+          </div>
+          <div class="tl-v-item">
+            <div class="tl-v-year">2024</div>
+            <div class="tl-v-content">
+              Upgrade fasilitas herbal & pemilihan therapist berpengalaman
+              kecantikan + spa.
+            </div>
+          </div>
+          <div class="tl-v-item">
+            <div class="tl-v-year">2025</div>
+            <div class="tl-v-content">
+              Upgrade fasilitas herbal & pemilihan therapist berpengalaman
+              kecantikan + spa.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEGMENTASI DEMOGRAFIS FMBC (BARU!) -->
+      <section>
+        <h2>Segmentasi Demografis FMBC</h2>
+        <div class="segmentasi-section">
+          <div class="pie-wrapper">
+            <div class="pie-chart">
+              <div class="pie-center">
+                <div style="font-size: 20px">Mayoritas</div>
+                <big>92%</big>
+                <div>WOMAN</div>
+              </div>
+            </div>
+            <div class="pie-label-woman">92% WOMAN</div>
+            <div class="pie-label-man">8% MAN</div>
+          </div>
+
+          <ul class="segmentasi-list">
+            <li>Usia <strong>20 - 40 tahun</strong></li>
+            <li>
+              Target klien kalangan
+              <strong>menengah s.d menengah ke atas</strong>
+            </li>
+            <li>
+              Melayani rata-rata
+              <strong>400+ Bunda dan buah hati setiap bulannya</strong>
+            </li>
+            <li>
+              Klien yang sedang
+              <strong>hamil, ibu menyusui, dan anak usia 0-10 tahun</strong>
+            </li>
+            <li>
+              Domisili
+              <strong
+                >Kota Bogor, Kabupaten Bogor, Depok, dan sebagian wilayah
+                Tangerang</strong
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Treatment -->
+      <section>
+        <h2>Therapist Kami</h2>
+        <div class="treatment-grid">
+          <div class="treatment-card">
+            <img
+              src="https://i.ibb.co.com/yourlink/pregnancy.jpg"
+              alt="Pregnancy"
+            />
+            <div class="treatment-pill">Farah Riyadi</div>
+          </div>
+          <div class="treatment-card">
+            <img src="https://i.ibb.co.com/ylink/mom.jpg" alt="Mom" />
+            <div class="treatment-pill">Nama bidan</div>
+          </div>
+          <div class="treatment-card">
+            <img
+              src="https://i.ibb.co.com/ylink/babykids.jpg"
+              alt="Baby Kids"
+            />
+            <div class="treatment-pill">Nama bidan</div>
+          </div>
+          <div class="treatment-card">
+            <img src="https://i.ibb.co.com/ylink/newborn.jpg" alt="Newborn" />
+            <div class="treatment-pill">Nama bidan</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Influencer & Contact tetap sama -->
+      <section>
+        <h2>Kolaborasi Influencer Kami</h2>
+        <div class="influencer-pills">
+          <div class="pill">@Beekenzo</div>
+          <div class="pill">@Geradilnene</div>
+          <div class="pill">@Sin.sr</div>
+          <div class="pill">@angelica.simpnew</div>
+          <div class="pill">@Bidanseruni</div>
+          <div class="pill">@Karinajulianaptr</div>
+          <div class="pill">@Viikanur</div>
+          <div class="pill">@Dputry</div>
+          <div class="pill">@Aulianoor</div>
+          <div class="pill">@Kellynkkr</div>
+          <div class="pill">@Windavictoria</div>
+          <div class="pill">@Nurfitriyani111</div>
+        </div>
+      </section>
+
+      <div class="contact">
+        <div class="container">
+          <h2 style="color: white">Hubungi Kami</h2>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <h4>Phone / WA</h4>
+              <p>0812-8415-3338</p>
+            </div>
+            <div class="contact-item">
+              <h4>Instagram</h4>
+              <p>@homecare_bidanfarah</p>
+            </div>
+            <div class="contact-item">
+              <h4>Email</h4>
+              <p>homecarebidanfarah@gmail.com</p>
+            </div>
+            <div class="contact-item">
+              <h4>Alamat</h4>
+              <p>
+                Ruko Nusa Indah, Jl. Pandu Raya No.3<br />Tegal Gundil, Bogor
+                Utara<br />Kota Bogor
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      style="text-align: center; padding: 60px; background: white; color: #999"
+    >
+      <p>© 2025 Farah Mom & Baby Care. All rights reserved.</p>
+    </footer>
+    <script>
+      // Efek navbar berubah saat scroll
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

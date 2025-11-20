@@ -21,496 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <style>
-      html,
-      body {
-        overflow-x: hidden; /* Larang scroll horizontal */
-        width: 100%;
-        max-width: 100%;
-      }
-
-      :root {
-        --terracotta: #e2725b;
-        --soft-terracotta: #fdf6f0;
-        --warm-beige: #f5e8d3;
-        --text-dark: #5d4037;
-        --warm-gray: #8d6e63;
-      }
-
-      body {
-        font-family: "DM Sans", sans-serif;
-        background-color: var(--soft-terracotta);
-        color: var(--text-dark);
-        scroll-behavior: smooth;
-        position: relative;
-      }
-
-      /* Navbar */
-      .navbar {
-        background: rgba(253, 246, 240, 1); /* Opaque default */
-        backdrop-filter: none; /* Tanpa blur default */
-        transition: all 0.4s ease;
-      }
-      .navbar.scrolled {
-        background: transparent; /* Transparan saat di-scroll */
-        backdrop-filter: blur(
-          8px
-        ); /* Tambahkan blur untuk efek transparan yang halus */
-        box-shadow: 0 4px 12px rgba(226, 114, 91, 0.1);
-      }
-      .navbar-brand {
-        font-weight: 700;
-        color: var(--terracotta) !important;
-      }
-      .navbar-brand img {
-        height: 40px;
-        width: auto;
-      }
-      .nav-link {
-        color: var(--warm-gray) !important;
-        font-weight: 500;
-        margin: 0 0.6rem;
-        transition: 0.2s;
-      }
-      .nav-link:hover {
-        color: var(--terracotta) !important;
-      }
-
-      /* Hero */
-      .hero {
-        background: linear-gradient(
-            rgba(245, 232, 211, 0.7),
-            rgba(253, 246, 240, 0.9)
-          ),
-          url("asset/parallax.JPG");
-        background-size: cover;
-        background-attachment: fixed;
-        background-position: center;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        padding: 2rem;
-      }
-      .hero h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--terracotta);
-      }
-      .hero p {
-        color: var(--warm-gray);
-        max-width: 600px;
-        margin: 1rem auto 2rem;
-      }
-      .btn-main {
-        background: var(--terracotta);
-        color: #fff;
-        border: none;
-        border-radius: 50px;
-        padding: 0.9rem 2rem;
-        font-weight: 600;
-        transition: 0.3s;
-      }
-      .btn-main:hover {
-        background: #d95a40;
-      }
-
-      /* Section */
-      section {
-        padding: 5rem 1rem;
-      }
-      .section-title {
-        text-align: center;
-        font-weight: 700;
-        color: var(--terracotta);
-        margin-bottom: 0.5rem;
-        font-size: 1.9rem;
-      }
-      .subtitle {
-        text-align: center;
-        color: var(--warm-gray);
-        margin-bottom: 2.5rem;
-      }
-
-      /* Accordion */
-      .accordion-item {
-        border: none;
-        margin-bottom: 1rem;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 10px rgba(226, 114, 91, 0.05);
-      }
-      .accordion-button {
-        font-weight: 600;
-        background-color: #fff;
-        color: var(--text-dark);
-        border-radius: 12px !important;
-      }
-      .accordion-button:not(.collapsed) {
-        color: var(--terracotta);
-        background-color: var(--warm-beige);
-        box-shadow: none;
-      }
-      .accordion-body img {
-        width: 100%;
-        height: auto;
-        border-radius: 15px;
-        margin-top: 1rem;
-        box-shadow: 0 4px 12px rgba(226, 114, 91, 0.08);
-      }
-
-      @media (max-width: 991px) {
-        .accordion-body img {
-          width: 100%; /* Penuh pada mobile, tidak terlalu kecil */
-          max-width: none;
-        }
-      }
-
-      /* Services Cards */
-      .text-terracotta {
-        color: var(--terracotta);
-      }
-      .card {
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(226, 114, 91, 0.05);
-        transition: all 0.3s ease;
-        text-align: center;
-        background: #fff;
-        height: 100%;
-      }
-      .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(226, 114, 91, 0.1);
-      }
-      .card i {
-        font-size: 2.5rem;
-        display: block;
-        margin: 1rem auto 1rem;
-        color: var(--terracotta);
-      }
-      .card-body {
-        padding: 1.5rem;
-      }
-      .card-title {
-        color: var(--text-dark);
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
-      .card-text {
-        color: var(--warm-gray);
-      }
-      .btn-service {
-        background: var(--terracotta);
-        color: #fff;
-        border: none;
-        border-radius: 25px;
-        padding: 0.5rem 1.5rem;
-        font-weight: 600;
-        margin-top: 1rem;
-        transition: 0.3s;
-      }
-      .btn-service:hover {
-        background: #d95a40;
-        color: #fff;
-        text-decoration: none;
-      }
-
-      /* Unified Location Section in One Box */
-      #location {
-        background: linear-gradient(
-          135deg,
-          var(--soft-terracotta) 0%,
-          var(--warm-beige) 100%
-        );
-        position: relative;
-        overflow: hidden;
-        padding: 5rem 1rem;
-      }
-      #location::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(226,114,91,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(226,114,91,0.05)"/><circle cx="50" cy="10" r="0.5" fill="rgba(226,114,91,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-        pointer-events: none;
-        opacity: 0.8;
-      }
-      .location-content {
-        position: relative;
-        z-index: 1;
-      }
-      .location-hero {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-      .location-hero h2 {
-        font-size: 2.2rem;
-        font-weight: 700;
-        color: var(--terracotta);
-        margin-bottom: 0.5rem;
-      }
-      .location-hero p {
-        font-size: 1.1rem;
-        color: var(--warm-gray);
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      .location-box {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(15px);
-        border-radius: 25px;
-        padding: 3rem;
-        box-shadow: 0 15px 40px rgba(226, 114, 91, 0.2);
-        transition: all 0.4s ease;
-        border: 1px solid rgba(226, 114, 91, 0.1);
-        margin-bottom: 2rem;
-      }
-      .location-box:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 20px 50px rgba(226, 114, 91, 0.25);
-      }
-      .location-map-container {
-        position: relative;
-        border-radius: 20px;
-        overflow: hidden;
-        height: 300px;
-        margin-bottom: 2rem;
-        box-shadow: 0 10px 30px rgba(226, 114, 91, 0.15);
-      }
-      .location-map {
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-      .location-info {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-      }
-      .info-item {
-        text-align: center;
-      }
-      .location-icon {
-        font-size: 2rem;
-        color: var(--terracotta);
-        margin-bottom: 0.5rem;
-        animation: pulse 2s infinite;
-      }
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.1);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-      .info-title {
-        color: var(--text-dark);
-        font-weight: 600;
-        margin-bottom: 0.25rem;
-        font-size: 1rem;
-      }
-      .info-text {
-        color: var(--warm-gray);
-        font-size: 0.9rem;
-        line-height: 1.4;
-      }
-      .info-text a {
-        color: var(--terracotta);
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-      .info-text a:hover {
-        color: #d95a40;
-      }
-      .home-treatment-highlight {
-        background: linear-gradient(
-          135deg,
-          rgba(226, 114, 91, 0.1),
-          rgba(245, 232, 211, 0.5)
-        );
-        border-radius: 10px;
-        padding: 1rem;
-        margin-top: 0.5rem;
-        text-align: center;
-        border-left: 3px solid var(--terracotta);
-        font-size: 0.85rem;
-      }
-      .btn-directions {
-        background: linear-gradient(135deg, var(--terracotta), #d95a40);
-        color: #fff;
-        border: none;
-        border-radius: 50px;
-        padding: 0.75rem 1.5rem;
-        font-weight: 600;
-        transition: all 0.3s;
-        display: inline-block;
-        margin: 0 0.5rem 0.5rem 0;
-        box-shadow: 0 4px 15px rgba(226, 114, 91, 0.3);
-      }
-      .btn-directions:hover {
-        transform: scale(1.05);
-        color: #fff;
-        text-decoration: none;
-        box-shadow: 0 6px 20px rgba(226, 114, 91, 0.4);
-      }
-      .location-ornament {
-        position: absolute;
-        top: 10%;
-        right: 5%;
-        font-size: 5rem;
-        color: rgba(226, 114, 91, 0.08);
-        z-index: 0;
-        animation: float 3s ease-in-out infinite;
-      }
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      /* Fade-in */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.8s ease-out;
-      }
-      .fade-in.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Booking */
-      .booking {
-        background: var(--warm-beige);
-        border-radius: 20px;
-        padding: 3rem;
-      }
-
-      /* Floating Buttons */
-      .float-btn {
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .float-btn a {
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.5rem;
-        text-decoration: none;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      }
-      .wa {
-        background: #25d366;
-      }
-      .call {
-        background: var(--terracotta);
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .location-map-container {
-          height: 250px;
-        }
-        .location-hero h2 {
-          font-size: 1.8rem;
-        }
-        .location-box {
-          padding: 2rem;
-        }
-        .location-ornament {
-          display: none;
-        }
-        .btn-directions {
-          width: 100%;
-          margin-bottom: 0.5rem;
-        }
-        .navbar-brand img {
-          height: 35px;
-        }
-      }
-
-      /* Hover Effects untuk Footer */
-      .footer-link {
-        color: var(--warm-gray);
-        text-decoration: none;
-        position: relative;
-        transition: all 0.3s ease;
-      }
-      .footer-link:hover {
-        color: var(--terracotta) !important;
-        padding-left: 8px;
-      }
-      .footer-link::before {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -2px;
-        left: 0;
-        background-color: var(--terracotta);
-        transition: width 0.3s ease;
-      }
-      .footer-link:hover::before {
-        width: 30px;
-      }
-
-      .footer-list-item {
-        color: var(--warm-gray);
-        transition: all 0.3s ease;
-      }
-      .footer-list-item:hover {
-        color: var(--terracotta);
-        padding-left: 6px;
-      }
-
-      /* Hover kolom sedikit naik */
-      .footer-col {
-        transition: transform 0.3s ease;
-      }
-      .footer-col:hover {
-        transform: translateY(-5px);
-      }
-
-      /* Sosmed icon hover */
-      .text-terracotta.transition-all {
-        transition: all 0.3s ease;
-      }
-      .text-terracotta.transition-all:hover {
-        color: #d95a40 !important;
-        transform: scale(1.25) rotate(8deg);
-      }
-
-      /* Tombol WA di footer */
-      .wa-footer-btn {
-        transition: all 0.3s ease;
-      }
-      .wa-footer-btn:hover {
-        background: #d95a40 !important;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(226, 114, 91, 0.3);
-      }
-    </style>
+    <link href="style.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -607,7 +118,7 @@
       </div>
     </section>
 
-    <!-- Company Profile Section – Versi Terbaru 2025 + Fix Mobile Scroll -->
+    <!-- Company Profile -->
     <section
       id="about"
       class="fade-in py-5 py-md-6"
@@ -685,6 +196,16 @@
                 </h2>
                 <p class="text-muted small mb-0">Jangkauan Homecare</p>
               </div>
+            </div>
+
+            <div class="mt-4">
+              <a
+                href="tentang kami.html"
+                class="btn btn-main btn-lg shadow-sm"
+                style="padding: 0.8rem 2.4rem; border-radius: 50px"
+              >
+                Lihat lebih Detail
+              </a>
             </div>
           </div>
 
@@ -832,13 +353,19 @@
             </h2>
             <div
               id="fac1"
-              class="accordion-collapse collapse show"
+              class="accordion-collapse collapse"
               data-bs-parent="#fasilitasAccordion"
             >
               <div class="accordion-body">
                 Didesain dengan suasana tenang dan aroma relaksasi yang
                 menenangkan, Mom Room di Farah Mom & Baby Care menjadi tempat
-                terbaik untuk melepas penat.
+                terbaik untuk melepas penat. Kami menyediakan dua ruangan privat
+                yang nyaman dan personal. Nikmati berbagai perawatan eksklusif
+                untuk ibu, mulai dari Mom Serenity Massage, Lactation Massage
+                (Pijat Laktasi), hingga Foot Spa yang membantu tubuh kembali
+                segar dan rileks. Semua dilakukan dalam suasana bersih, tenang,
+                dan penuh ketenangan agar setiap ibu merasa
+                dimanjakan sepenuhnya.
                 <img
                   src="asset/mom_treatment_room.jpg"
                   alt="Ruang Perawatan Ibu"
@@ -857,7 +384,7 @@
                 data-bs-target="#fac2"
               >
                 <i class="fa-solid fa-bath me-2 text-terracotta"></i> Area Baby
-                Spa
+                Massage
               </button>
             </h2>
             <div
@@ -868,7 +395,7 @@
               <div class="accordion-body">
                 Dirancang dengan suasana hangat dan tenang, menciptakan
                 pengalaman pijat yang nyaman.
-                <img src="asset/baby_spa.jpg" alt="Area Baby Spa" />
+                <img src="asset/baby spa area.jpg " alt="Area Baby Spa" />
               </div>
             </div>
           </div>
@@ -909,7 +436,7 @@
                 data-bs-target="#fac4"
               >
                 <i class="fa-solid fa-water-ladder me-2 text-terracotta"></i>
-                Kolam Baby (Hydrotherapy)
+                Baby Spa
               </button>
             </h2>
             <div
@@ -918,9 +445,13 @@
               data-bs-parent="#fasilitasAccordion"
             >
               <div class="accordion-body">
-                Kolam air hangat khusus bayi dengan pengawasan terapis
-                profesional. Membantu perkembangan motorik, relaksasi, dan
-                menyenangkan untuk si kecil.
+                Dilengkapi kolam air hangat steril dan peralatan berstandar
+                khusus, Baby Spa di Farah Mom & Baby Care membantu relaksasi
+                sekaligus stimulasi motorik si kecil. Tersedia pelampung leher
+                dan pinggang berstandar SNI, memastikan keamanan dan kenyamanan
+                selama sesi berlangsung. Suasana hangat dan tenang menjadikan
+                setiap momen spa penuh keceriaan dan kedekatan antara
+                ibu dan buah hati.
                 <img
                   src="asset/kolam_renang.JPG"
                   alt="Kolam Baby Hydrotherapy"
@@ -1186,38 +717,6 @@
               <li class="mb-2">
                 <a href="survey/survey.html" class="footer-link"
                   >Survey Gejala</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- Layanan -->
-          <div class="col-lg-3 col-md-6 col-sm-6 footer-col">
-            <h6 class="fw-bold text-terracotta mb-3">Layanan Kami</h6>
-            <ul class="list-unstyled small">
-              <li class="mb-2">
-                <a href="our services.html#baby-treatment" class="footer-link"
-                  >• Baby Treatment</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="Our Services.html#kids-treatment" class="footer-link"
-                  >• Kids Treatment</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="Our Services.html#mom-treatment" class="footer-link"
-                  >• Mom Treatment</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="Our Services.html#kelas-yoga" class="footer-link"
-                  >• Kelas Prenatal Yoga</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="https://wa.me/628128415338" class="footer-link"
-                  >• Home Treatment (Langsung chat dmin)</a
                 >
               </li>
             </ul>
