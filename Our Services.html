@@ -218,36 +218,37 @@
       }
 
       /* Floating Buttons */
-      .float-btn {
+      .wa-fab {
         position: fixed;
-        bottom: 25px;
-        right: 25px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        z-index: 1000;
-      }
-      .float-btn a {
-        width: 55px;
-        height: 55px;
+        bottom: 30px;
+        right: 30px;
+        background: linear-gradient(45deg, #25d366, #128c7e);
+        color: white;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
-        font-size: 1.5rem;
-        text-decoration: none;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease;
+        font-size: 34px;
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        z-index: 1000;
+        animation: pulse 2s infinite;
+        text-decoration: none !important;
       }
-      .float-btn a:hover {
-        transform: scale(1.1);
+      .wa-fab:hover {
+        transform: scale(1.15);
       }
-      .wa {
-        background: #25d366;
-      }
-      .call {
-        background: var(--terracotta);
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
       }
 
       /* Responsive */
@@ -284,6 +285,9 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link" href="index.html#home">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#about">Tentang Kami</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="index.html#facility">Fasilitas</a>
@@ -379,10 +383,15 @@
         <!-- Baby Tab -->
         <div class="tab-pane fade show active" id="baby" role="tabpanel">
           <div class="row">
+            <!-- 1. Baby Massage -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/baby_massage.JPG"
+                  class="card-img-top"
+                  alt="Baby Massage"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-baby-carriage"></i>
                   <h5 class="card-title">Baby Massage (0-12 Bulan)</h5>
                   <p class="card-text">
                     Pemeriksaan kesehatan & pijatan lembut dengan oil premium.
@@ -397,10 +406,16 @@
                 </div>
               </div>
             </div>
+
+            <!-- 2. Pediatric Medical Massage Baby -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/pediatric_massage.JPG"
+                  class="card-img-top"
+                  alt="Pediatric Medical Massage Baby"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-stethoscope"></i>
                   <h5 class="card-title">
                     Pediatric Medical Massage For Baby (0-12 Bulan)
                   </h5>
@@ -417,10 +432,16 @@
                 </div>
               </div>
             </div>
+
+            <!-- 3. Baby Spa -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/baby_spa.JPG"
+                  class="card-img-top"
+                  alt="Baby Spa"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-spa"></i>
                   <h5 class="card-title">Baby Spa (3-10 Bulan)</h5>
                   <p class="card-text">
                     Massage + gym + swim di air hangat. Durasi: 60 menit. Harga
@@ -432,10 +453,16 @@
                 </div>
               </div>
             </div>
+
+            <!-- 4. Bubble Bath -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/bubble_bath.JPG"
+                  class="card-img-top"
+                  alt="Bubble Bath"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-bath"></i>
                   <h5 class="card-title">Bubble Bath (10 Bulan - 5 Tahun)</h5>
                   <p class="card-text">
                     Mandi busa dengan mainan seru untuk relaksasi & motorik.
@@ -447,10 +474,16 @@
                 </div>
               </div>
             </div>
+
+            <!-- 5. Baby Body Mask -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/body_mask.JPG"
+                  class="card-img-top"
+                  alt="Baby Body Mask"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-mask"></i>
                   <h5 class="card-title">Baby Body Mask (3-12 Bulan)</h5>
                   <p class="card-text">
                     Masker organik untuk motorik & kulit. Durasi: 30 menit.
@@ -465,10 +498,16 @@
                 </div>
               </div>
             </div>
+
+            <!-- 6. Baby Hair Cut -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/haircut.JPG"
+                  class="card-img-top"
+                  alt="Baby Hair Cut"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-scissors"></i>
                   <h5 class="card-title">Baby Hair Cut (0-12 Bulan)</h5>
                   <p class="card-text">
                     Cukur rambut botak/gundul aman. Durasi: 15-20 menit. Harga
@@ -483,10 +522,16 @@
                 </div>
               </div>
             </div>
+
+            <!-- 7. Tindik Telinga + Anting -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/tindik_telinga.JPG"
+                  class="card-img-top"
+                  alt="Tindik Telinga Bayi"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-ear-deaf"></i>
                   <h5 class="card-title">
                     Tindik Telinga + Pasang Anting (0-5 Bulan)
                   </h5>
@@ -503,10 +548,16 @@
                 </div>
               </div>
             </div>
+
+            <!-- 8. Baby Bath -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/baby_bath.JPG"
+                  class="card-img-top"
+                  alt="Baby Bath"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-shower"></i>
                   <h5 class="card-title">Baby Bath (0-12 Bulan)</h5>
                   <p class="card-text">
                     Mandi setelah treatment. Durasi: 15 menit. Harga mulai: Rp
@@ -524,10 +575,15 @@
         <!-- Kids Tab -->
         <div class="tab-pane fade" id="kids" role="tabpanel">
           <div class="row">
+            <!-- 1. Kids Massage -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/kid_massage.JPG"
+                  class="card-img-top"
+                  alt="Kids Massage"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-child-reaching"></i>
                   <h5 class="card-title">Kids Massage (1-10 Tahun)</h5>
                   <p class="card-text">
                     Pijatan lembut seluruh badan. Durasi: 30 menit. Harga mulai:
@@ -542,10 +598,16 @@
                 </div>
               </div>
             </div>
+
+            <!-- 2. Pediatric Medical Massage For Kids -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/pediatric_massage_kid.JPG"
+                  class="card-img-top"
+                  alt="Pediatric Medical Massage Kids"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-stethoscope"></i>
                   <h5 class="card-title">
                     Pediatric Medical Massage For Kids (1-10 Tahun)
                   </h5>
@@ -562,10 +624,16 @@
                 </div>
               </div>
             </div>
+
+            <!-- 3. Kids Body Mask -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/kid_body_mask.JPG"
+                  class="card-img-top"
+                  alt="Kids Body Mask"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-mask"></i>
                   <h5 class="card-title">Kids Body Mask (1-10 Tahun)</h5>
                   <p class="card-text">
                     Masker organik untuk motorik & kreativitas. Durasi: 30
@@ -582,18 +650,24 @@
             </div>
           </div>
         </div>
+        <!-- AKHIR KIDS TAB -->
 
         <!-- Mom Tab -->
         <div class="tab-pane fade" id="mom" role="tabpanel">
           <div class="row">
+            <!-- 1. Pregnancy Massage -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/mom_pregnancy_massage.JPG"
+                  class="card-img-top"
+                  alt="Pregnancy Massage"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-person-pregnant"></i>
                   <h5 class="card-title">Pregnancy Massage (18-41 Minggu)</h5>
                   <p class="card-text">
-                    Pijat aman untuk relaksasi & tidur. Durasi: 60-90 menit.
-                    Harga mulai: Rp 180.000
+                    Pijat aman untuk relaksasi & tidur nyenyak ibu hamil.
+                    Durasi: 60-90 menit. Harga mulai: Rp 180.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -604,14 +678,20 @@
                 </div>
               </div>
             </div>
+
+            <!-- 2. Totok Wajah & Masker Wajah -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/mom_totok_wajah.JPG"
+                  class="card-img-top"
+                  alt="Totok Wajah"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-face-smile"></i>
                   <h5 class="card-title">Totok Wajah & Masker Wajah</h5>
                   <p class="card-text">
-                    Perawatan kecantikan aman untuk hamil/menyusui. Durasi: 30
-                    menit. Harga mulai: Rp 75.000
+                    Perawatan kecantikan aman untuk hamil & menyusui. Durasi: 30
+                    menit. Harga mulai: Rp 75.card-text
                   </p>
                   <button
                     class="btn btn-book"
@@ -622,16 +702,22 @@
                 </div>
               </div>
             </div>
+
+            <!-- 3. Gelombang Cinta Massage -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/"
+                  class="card-img-top"
+                  alt="Gelombang Cinta Massage"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-spa"></i>
                   <h5 class="card-title">
                     Gelombang Cinta Massage (37-41 Minggu)
                   </h5>
                   <p class="card-text">
-                    Induksi alami untuk persalinan. Durasi: 45 menit. Harga
-                    mulai: Rp 190.000
+                    Induksi alami untuk mempersiapkan persalinan. Durasi: 45
+                    menit. Harga mulai: Rp 190.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -642,13 +728,19 @@
                 </div>
               </div>
             </div>
+
+            <!-- 4. Mom Serenity Massage (Pijat Nifas) -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/mom_pijat_nifas.JPG"
+                  class="card-img-top"
+                  alt="Pijat Nifas"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-baby"></i>
                   <h5 class="card-title">Mom Serenity Massage (Pijat Nifas)</h5>
                   <p class="card-text">
-                    Pijat nifas untuk relaksasi pasca lahir. Durasi: 60-90
+                    Pijat nifas untuk pemulihan pasca melahirkan. Durasi: 60-90
                     menit. Harga mulai: Rp 150.000
                   </p>
                   <button
@@ -660,14 +752,20 @@
                 </div>
               </div>
             </div>
+
+            <!-- 5. Foot Spa -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/mom_foot_spa.JPG"
+                  class="card-img-top"
+                  alt="Foot Spa"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-bath"></i>
                   <h5 class="card-title">Foot Spa</h5>
                   <p class="card-text">
-                    Rendaman kaki untuk pegal. Durasi: 15-20 menit. Harga mulai:
-                    Rp 40.000 (wajib dengan treatment lain)
+                    Rendaman kaki hangat untuk meredakan pegal. Durasi: 15-20
+                    menit. Harga mulai: Rp 40.000 (wajib dengan treatment lain)
                   </p>
                   <button class="btn btn-book" onclick="bookNow('Foot Spa')">
                     Book Now
@@ -675,16 +773,22 @@
                 </div>
               </div>
             </div>
+
+            <!-- 6. Lactation Massage -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/mom_lactation_massage.JPG"
+                  class="card-img-top"
+                  alt="Lactation Massage"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-heart"></i>
                   <h5 class="card-title">
                     Lactation Massage (1 Hari - 24 Bulan Pasca Persalinan)
                   </h5>
                   <p class="card-text">
-                    Pijat oksitosin & breast care untuk ASI. Durasi: 45 menit.
-                    Harga mulai: Rp 135.000
+                    Pijat oksitosin & breast care untuk kelancaran ASI. Durasi:
+                    45 menit. Harga mulai: Rp 135.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -695,14 +799,20 @@
                 </div>
               </div>
             </div>
+
+            <!-- 7. Masker Payudara -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/masker-payudara.jpg"
+                  class="card-img-top"
+                  alt="Masker Payudara"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-mask"></i>
                   <h5 class="card-title">Masker Payudara</h5>
                   <p class="card-text">
-                    Masker untuk lancar ASI. Durasi: 15-20 menit. Harga mulai:
-                    Rp 35.000
+                    Masker khusus untuk membantu kelancaran ASI. Durasi: 15-20
+                    menit. Harga mulai: Rp 35.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -713,14 +823,20 @@
                 </div>
               </div>
             </div>
+
+            <!-- 8. Pemeriksaan Gula Darah -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/mom_cek_gula_darah.JPG"
+                  class="card-img-top"
+                  alt="Cek Gula Darah"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-vial"></i>
                   <h5 class="card-title">Pemeriksaan Gula Darah</h5>
                   <p class="card-text">
-                    Cek kesehatan dasar. Harga: Rp 25.000-75.000 (wajib dengan
-                    treatment lain)
+                    Cek kesehatan dasar (wajib dengan treatment lain). Harga: Rp
+                    25.000-75.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -731,14 +847,20 @@
                 </div>
               </div>
             </div>
+
+            <!-- 9. Pemeriksaan Kolesterol -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/mom_cek_kolestrol.JPG"
+                  class="card-img-top"
+                  alt="Cek Kolesterol"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-vial"></i>
                   <h5 class="card-title">Pemeriksaan Kolesterol</h5>
                   <p class="card-text">
-                    Cek kesehatan dasar. Harga: Rp 35.000-85.000 (wajib dengan
-                    treatment lain)
+                    Cek kesehatan dasar (wajib dengan treatment lain). Harga: Rp
+                    35.000-85.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -749,14 +871,20 @@
                 </div>
               </div>
             </div>
+
+            <!-- 10. Pemeriksaan Asam Urat -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/mom_cek_asam_urat.JPG"
+                  class="card-img-top"
+                  alt="Cek Asam Urat"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-vial"></i>
                   <h5 class="card-title">Pemeriksaan Asam Urat</h5>
                   <p class="card-text">
-                    Cek kesehatan dasar. Harga: Rp 25.000-75.000 (wajib dengan
-                    treatment lain)
+                    Cek kesehatan dasar (wajib dengan treatment lain). Harga: Rp
+                    25.000-75.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -769,18 +897,24 @@
             </div>
           </div>
         </div>
+        <!-- AKHIR MOM TAB -->
 
-        <!-- Yoga Tab -->
+        <!-- Yoga dan parenting tab -->
         <div class="tab-pane fade" id="yoga" role="tabpanel">
           <div class="row">
+            <!-- 1. Kelas Senam Hamil -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/senam-hamil-kelas.jpg"
+                  class="card-img-top"
+                  alt="Kelas Senam Hamil"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-person-yoga"></i>
                   <h5 class="card-title">Kelas Senam Hamil (27-41 Minggu)</h5>
                   <p class="card-text">
-                    Senam + pemeriksaan + sharing. Durasi: 75 menit. Harga
-                    mulai: Rp 65.000
+                    Senam + pemeriksaan + sharing session. Durasi: 75 menit.
+                    Harga mulai: Rp 65.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -791,14 +925,20 @@
                 </div>
               </div>
             </div>
+
+            <!-- 2. Senam Hamil Private -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/senam-hamil-private.jpg"
+                  class="card-img-top"
+                  alt="Senam Hamil Private"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-person-yoga"></i>
                   <h5 class="card-title">Senam Hamil Private (27-41 Minggu)</h5>
                   <p class="card-text">
-                    Senam intimate + pemeriksaan. Durasi: 75 menit. Harga mulai:
-                    Rp 150.000
+                    Senam intimate satu lawan satu + pemeriksaan. Durasi: 75
+                    menit. Harga mulai: Rp 150.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -809,16 +949,22 @@
                 </div>
               </div>
             </div>
+
+            <!-- 3. Senam Hamil Private With Bestie -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/senam-hamil-bestie.jpg"
+                  class="card-img-top"
+                  alt="Senam Hamil With Bestie"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-person-yoga"></i>
                   <h5 class="card-title">
                     Senam Hamil Private With Bestie (27-41 Minggu)
                   </h5>
                   <p class="card-text">
-                    Senam berdua dengan teman. Durasi: 75 menit. Harga mulai: Rp
-                    280.000
+                    Senam berdua bareng sahabat hamil. Durasi: 75 menit. Harga
+                    mulai: Rp 280.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -829,16 +975,22 @@
                 </div>
               </div>
             </div>
+
+            <!-- 4. Prenatal Gentle Yoga Private -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/senam_hamil_private.JPG"
+                  class="card-img-top"
+                  alt="Prenatal Gentle Yoga Private"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-person-yoga"></i>
                   <h5 class="card-title">
                     Prenatal Gentle Yoga Private (13-41 Minggu)
                   </h5>
                   <p class="card-text">
-                    Yoga private untuk hamil. Durasi: 75 menit. Harga mulai: Rp
-                    245.000
+                    Yoga privat khusus ibu hamil. Durasi: 75 menit. Harga mulai:
+                    Rp 245.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -849,15 +1001,21 @@
                 </div>
               </div>
             </div>
+
+            <!-- 5. Prenatal Gentle Yoga Private With Bestie -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/prenatal-yoga-bestie.jpg"
+                  class="card-img-top"
+                  alt="Prenatal Yoga With Bestie"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-person-yoga"></i>
                   <h5 class="card-title">
                     Prenatal Gentle Yoga Private With Bestie (13-41 Minggu)
                   </h5>
                   <p class="card-text">
-                    Yoga berdua dengan teman hamil. Durasi: 75 menit. Harga
+                    Yoga berdua bareng teman hamil. Durasi: 75 menit. Harga
                     mulai: Rp 295.000
                   </p>
                   <button
@@ -869,16 +1027,22 @@
                 </div>
               </div>
             </div>
+
+            <!-- 6. Prenatal Couple Yoga Private -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/prenatal-couple-yoga.jpg"
+                  class="card-img-top"
+                  alt="Prenatal Couple Yoga"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-person-yoga"></i>
                   <h5 class="card-title">
                     Prenatal Couple Yoga Private (13-41 Minggu)
                   </h5>
                   <p class="card-text">
-                    Yoga untuk suami-istri. Durasi: 75 menit. Harga mulai: Rp
-                    295.000
+                    Yoga romantis bareng suami. Durasi: 75 menit. Harga mulai:
+                    Rp 295.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -889,16 +1053,22 @@
                 </div>
               </div>
             </div>
+
+            <!-- 7. Kelas Prenatal Gentle Yoga -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/kelas-prenatal-yoga.jpg"
+                  class="card-img-top"
+                  alt="Kelas Prenatal Yoga"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-person-yoga"></i>
                   <h5 class="card-title">
                     Kelas Prenatal Gentle Yoga (13-41 Minggu)
                   </h5>
                   <p class="card-text">
-                    Kelas yoga untuk hamil. Durasi: 75 menit. Harga mulai: Rp
-                    90.000
+                    Kelas yoga reguler untuk ibu hamil. Durasi: 75 menit. Harga
+                    mulai: Rp 90.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -909,14 +1079,20 @@
                 </div>
               </div>
             </div>
+
+            <!-- 8. Beginner Parenting Private Course -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/new_parenting.JPG"
+                  class="card-img-top"
+                  alt="Beginner Parenting Course"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-graduation-cap"></i>
                   <h5 class="card-title">Beginner Parenting Private Course</h5>
                   <p class="card-text">
-                    Kursus perawatan bayi baru lahir. Durasi: 120 menit. Harga
-                    mulai: Rp 200.000
+                    Kursus perawatan bayi baru lahir (private). Durasi: 120
+                    menit. Harga mulai: Rp 200.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -927,14 +1103,20 @@
                 </div>
               </div>
             </div>
+
+            <!-- 9. Birthing Essentials Private Class -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/birthing_essentials_private_class.JPG"
+                  class="card-img-top"
+                  alt="Birthing Essentials Class"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-graduation-cap"></i>
                   <h5 class="card-title">Birthing Essentials Private Class</h5>
                   <p class="card-text">
-                    Persiapan persalinan. Durasi: 90 menit. Harga mulai: Rp
-                    250.000
+                    Persiapan persalinan alami & gentle birth. Durasi: 90 menit.
+                    Harga mulai: Rp 250.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -945,14 +1127,20 @@
                 </div>
               </div>
             </div>
+
+            <!-- 10. Comprehensive Course -->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card treatment-card">
+                <img
+                  src="asset/treatment/comprehensive_training.JPG"
+                  class="card-img-top"
+                  alt="Comprehensive Course"
+                />
                 <div class="card-body">
-                  <i class="fa-solid fa-graduation-cap"></i>
                   <h5 class="card-title">Comprehensive Course</h5>
                   <p class="card-text">
-                    Kombinasi parenting & birthing. Durasi: 180 menit. Harga
-                    mulai: Rp 400.000
+                    Gabungan parenting + birthing essentials. Durasi: 180 menit.
+                    Harga mulai: Rp 400.000
                   </p>
                   <button
                     class="btn btn-book"
@@ -965,6 +1153,7 @@
             </div>
           </div>
         </div>
+        <!-- AKHIR YOGA & PARENTING TAB -->
 
         <!-- Package Tab -->
         <div class="tab-pane fade" id="package" role="tabpanel">
@@ -1516,15 +1705,11 @@
     <!-- Floating Buttons -->
     <div class="float-btn">
       <a
-        href="https://wa.me/628128415338"
-        class="wa"
+        href="https://wa.me/6281284153338?text=Halo%20Farah%20Mom%20%26%20Baby%20Care%2C%20saya%20mau%20konsultasi%20%3A"
+        class="wa-fab"
         target="_blank"
-        title="WhatsApp"
       >
         <i class="fab fa-whatsapp"></i>
-      </a>
-      <a href="tel:+628128415338" class="call" title="Call">
-        <i class="fa-solid fa-phone"></i>
       </a>
     </div>
 

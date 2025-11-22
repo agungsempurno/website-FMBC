@@ -375,31 +375,37 @@ section {
 }
 
 /* Floating Buttons */
-.float-btn {
+.wa-fab {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.float-btn a {
-  width: 55px;
-  height: 55px;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(45deg, #25d366, #128c7e);
+  color: white;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 1.5rem;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 34px;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  animation: pulse 2s infinite;
+  text-decoration: none !important;
 }
-.wa {
-  background: #25d366;
+.wa-fab:hover {
+  transform: scale(1.15);
 }
-.call {
-  background: var(--terracotta);
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
 }
 
 /* Responsive */
@@ -485,4 +491,3 @@ section {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(226, 114, 91, 0.3);
 }
-
