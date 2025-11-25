@@ -40,7 +40,6 @@
         scroll-behavior: smooth;
       }
 
-      /* Navbar */
       .navbar {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
@@ -54,6 +53,15 @@
         font-weight: 700;
         color: var(--terracotta) !important;
         font-size: 1.5rem;
+      }
+      .navbar-brand img {
+        height: 45px; /* Ukuran tinggi logo yang konsisten dan responsive */
+        width: auto; /* Menjaga rasio aspek */
+        max-height: 50px; /* Batas maksimal untuk layar besar */
+        transition: transform 0.3s ease; /* Efek hover halus */
+      }
+      .navbar-brand:hover img {
+        transform: scale(1.05); /* Efek zoom ringan saat hover */
       }
       .nav-link {
         color: var(--text-light) !important;
@@ -272,7 +280,9 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.html">FMBC</a>
+        <a class="navbar-brand" href="index.html"
+          ><img src="asset/logo.png" alt=""
+        /></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -304,7 +314,7 @@
     </nav>
 
     <!-- Hero Services -->
-    <section class="hero-services fade-in">
+    <section class="hero-services fade-in mt-5">
       <div class="container">
         <h1>Layanan Kami</h1>
         <p>
