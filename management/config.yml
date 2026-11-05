@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: agungsempurno/website-FMBC
+  branch: main
+  base_url: https://fmbc-decap-auth.agungsempurno9-718.workers.dev
+  auth_endpoint: auth
+
+media_folder: "asset/uploads"
+public_folder: "/asset/uploads"
+
+collections:
+  - name: "pengaturan"
+    label: "Pengaturan"
+    files:
+      - file: "content/promo.json"
+        label: "Popup Promo"
+        name: "promo"
+        fields:
+          - { label: "Judul", name: "title", widget: "string" }
+          - { label: "Poster", name: "image", widget: "image" }
+          - { label: "Tampilkan popup", name: "active", widget: "boolean" }
