@@ -1,12 +1,180 @@
 <!doctype html>
-<html>
+<html lang="id">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Content Manager</title>
+    <title>Kelola Konten Website - FMBC</title>
+    <style>
+      :root {
+        --terracotta: #e2725b;
+        --terracotta-dark: #c85a45;
+        --warm-white: #fdfbf7;
+        --warm-gray: #6b5b4f;
+        --dark-gray: #3d332b;
+        --cream: #fff8f0;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: var(--cream);
+        color: var(--dark-gray);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+      .container {
+        background: white;
+        border-radius: 16px;
+        padding: 3rem 2.5rem;
+        max-width: 480px;
+        width: 100%;
+        box-shadow: 0 4px 24px rgba(61, 51, 43, 0.08);
+        border: 1px solid rgba(226, 114, 91, 0.15);
+        text-align: center;
+      }
+      .logo {
+        width: 72px;
+        height: 72px;
+        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 2px 8px rgba(226, 114, 91, 0.2);
+      }
+      h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--dark-gray);
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+      }
+      .subtitle {
+        color: var(--warm-gray);
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        font-weight: 400;
+      }
+      .loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(226, 114, 91, 0.15);
+        border-top-color: var(--terracotta);
+        border-radius: 50%;
+        animation: spin 0.9s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      .loading-text {
+        color: var(--warm-gray);
+        font-size: 0.95rem;
+      }
+      .features {
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(226, 114, 91, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: left;
+      }
+      .feature {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.875rem;
+        padding: 0.75rem 1rem;
+        background: var(--cream);
+        border-radius: 10px;
+        transition: background 0.2s;
+      }
+      .feature:hover { background: rgba(226, 114, 91, 0.06); }
+      .feature-icon {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+        background: var(--terracotta);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1rem;
+      }
+      .feature-text { flex: 1; }
+      .feature-title {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--dark-gray);
+        margin-bottom: 0.15rem;
+      }
+      .feature-desc {
+        font-size: 0.8rem;
+        color: var(--warm-gray);
+      }
+      .footer-note {
+        margin-top: 2rem;
+        font-size: 0.75rem;
+        color: var(--warm-gray);
+        opacity: 0.7;
+      }
+      .hidden { display: none !important; }
+    </style>
   </head>
   <body>
+    <div class="container" id="welcomeScreen">
+      <img src="/asset/logo.png" alt="Farah Mom & Baby Care" class="logo" onerror="this.style.display='none'">
+      <h1>Kelola Konten Website</h1>
+      <p class="subtitle">Panel untuk memperbarui promo, harga layanan, dan foto bidan di website Farah Mom & Baby Care</p>
+
+      <div class="loading" id="loadingIndicator">
+        <div class="spinner" aria-hidden="true"></div>
+        <p class="loading-text">Memuat sistem manajemen konten...</p>
+      </div>
+
+      <div class="features" aria-label="Fitur yang tersedia">
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">📢</span>
+          <div class="feature-text">
+            <div class="feature-title">Poster Promo</div>
+            <div class="feature-desc">Ganti gambar dan judul popup promosi di halaman utama</div>
+          </div>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">👩‍⚕️</span>
+          <div class="feature-text">
+            <div class="feature-title">Daftar Bidan & Terapis</div>
+            <div class="feature-desc">Tambah, hapus, atau ganti foto dan nama tim perawatan</div>
+          </div>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">💰</span>
+          <div class="feature-text">
+            <div class="feature-title">Harga Layanan</div>
+            <div class="feature-desc">Perbarui harga dan durasi treatment tanpa perlu coding</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="footer-note">Masuk dengan akun GitHub yang memiliki akses ke repository website FMBC</p>
+    </div>
+
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      setTimeout(function() {
+        var welcome = document.getElementById('welcomeScreen');
+        var loading = document.getElementById('loadingIndicator');
+        if (welcome && !welcome.classList.contains('hidden')) {
+          loading.innerHTML = '<p class="loading-text" style="color:#c85a45;">Memuat lebih lama dari biasa. <a href="#" onclick="location.reload()">Muat ulang halaman</a> atau pastikan koneksi internet stabil.</p>';
+        }
+      }, 15000);
+    </script>
   </body>
 </html>
