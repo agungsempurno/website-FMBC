@@ -1,180 +1,225 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>Kelola Konten Website - FMBC</title>
-    <style>
-      :root {
-        --terracotta: #e2725b;
-        --terracotta-dark: #c85a45;
-        --warm-white: #fdfbf7;
-        --warm-gray: #6b5b4f;
-        --dark-gray: #3d332b;
-        --cream: #fff8f0;
-      }
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: var(--cream);
-        color: var(--dark-gray);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-        line-height: 1.6;
-      }
-      .container {
-        background: white;
-        border-radius: 16px;
-        padding: 3rem 2.5rem;
-        max-width: 480px;
-        width: 100%;
-        box-shadow: 0 4px 24px rgba(61, 51, 43, 0.08);
-        border: 1px solid rgba(226, 114, 91, 0.15);
-        text-align: center;
-      }
-      .logo {
-        width: 72px;
-        height: 72px;
-        margin-bottom: 1.5rem;
-        border-radius: 12px;
-        object-fit: cover;
-        box-shadow: 0 2px 8px rgba(226, 114, 91, 0.2);
-      }
-      h1 {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: var(--dark-gray);
-        margin-bottom: 0.5rem;
-        letter-spacing: -0.02em;
-      }
-      .subtitle {
-        color: var(--warm-gray);
-        font-size: 1rem;
-        margin-bottom: 2rem;
-        font-weight: 400;
-      }
-      .loading {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      }
-      .spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid rgba(226, 114, 91, 0.15);
-        border-top-color: var(--terracotta);
-        border-radius: 50%;
-        animation: spin 0.9s linear infinite;
-      }
-      @keyframes spin { to { transform: rotate(360deg); } }
-      .loading-text {
-        color: var(--warm-gray);
-        font-size: 0.95rem;
-      }
-      .features {
-        margin-top: 2.5rem;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(226, 114, 91, 0.1);
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        text-align: left;
-      }
-      .feature {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.875rem;
-        padding: 0.75rem 1rem;
-        background: var(--cream);
-        border-radius: 10px;
-        transition: background 0.2s;
-      }
-      .feature:hover { background: rgba(226, 114, 91, 0.06); }
-      .feature-icon {
-        width: 36px;
-        height: 36px;
-        flex-shrink: 0;
-        background: var(--terracotta);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1rem;
-      }
-      .feature-text { flex: 1; }
-      .feature-title {
-        font-weight: 600;
-        font-size: 0.9rem;
-        color: var(--dark-gray);
-        margin-bottom: 0.15rem;
-      }
-      .feature-desc {
-        font-size: 0.8rem;
-        color: var(--warm-gray);
-      }
-      .footer-note {
-        margin-top: 2rem;
-        font-size: 0.75rem;
-        color: var(--warm-gray);
-        opacity: 0.7;
-      }
-      .hidden { display: none !important; }
-    </style>
-  </head>
-  <body>
-    <div class="container" id="welcomeScreen">
-      <img src="/asset/logo.png" alt="Farah Mom & Baby Care" class="logo" onerror="this.style.display='none'">
-      <h1>Kelola Konten Website</h1>
-      <p class="subtitle">Panel untuk memperbarui promo, harga layanan, dan foto bidan di website Farah Mom & Baby Care</p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dashboard FMBC - Manajemen Konten</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f7f1ea; }
+    .sidebar-shadow { box-shadow: 0px 8px 12px rgba(61, 51, 43, 0.08); }
+    .card-shadow { box-shadow: 0px 8px 12px rgba(61, 51, 43, 0.08); }
+    .border-fmbc { border-color: rgba(226, 114, 91, 0.1); }
+    .text-fmbc-dark { color: #3d332b; }
+    .text-fmbc-muted { color: #6b5b4f; }
+    .bg-fmbc-primary { background-color: #e2725b; }
+    .bg-fmbc-light { background-color: #f7f1ea; }
+  </style>
+</head>
+<body class="p-8 flex flex-col items-center">
 
-      <div class="loading" id="loadingIndicator">
-        <div class="spinner" aria-hidden="true"></div>
-        <p class="loading-text">Memuat sistem manajemen konten...</p>
+  <div class="w-full max-w-[1216px] flex gap-6 items-start">
+    
+    <!-- Sidebar -->
+    <aside class="bg-white border border-fmbc sidebar-shadow flex flex-col gap-2 p-4 rounded-[20px] w-[196px] shrink-0">
+      <a href="/management/" class="bg-fmbc-light flex gap-3 items-center p-3 rounded-[12px] w-full">
+        <div class="bg-fmbc-primary h-5 w-1 rounded-[2px]"></div>
+        <span class="font-bold text-sm text-fmbc-dark">Ringkasan</span>
+      </a>
+      <a href="/management/admin.html#/collections/layanan" class="flex items-center p-3 rounded-[12px] w-full hover:bg-fmbc-light transition">
+        <span class="font-semibold text-sm text-fmbc-dark">Treatment</span>
+      </a>
+      <a href="/management/admin.html#/collections/paket" class="flex items-center p-3 rounded-[12px] w-full hover:bg-fmbc-light transition">
+        <span class="font-semibold text-sm text-fmbc-dark">Paket</span>
+      </a>
+      <a href="/management/admin.html#/collections/promo" class="flex items-center p-3 rounded-[12px] w-full hover:bg-fmbc-light transition">
+        <span class="font-semibold text-sm text-fmbc-dark">Promo</span>
+      </a>
+      <a href="/management/admin.html#/collections/therapists" class="flex items-center p-3 rounded-[12px] w-full hover:bg-fmbc-light transition">
+        <span class="font-semibold text-sm text-fmbc-dark">Tim</span>
+      </a>
+      <div class="mt-8 pt-4 border-t border-fmbc">
+        <button id="authBtn" onclick="netlifyIdentity.open()" class="w-full text-left text-xs font-bold text-fmbc-muted uppercase tracking-wider px-3 py-2 bg-fmbc-light rounded-lg hover:bg-opacity-80 transition">Akun / Login</button>
       </div>
+    </aside>
 
-      <div class="features" aria-label="Fitur yang tersedia">
-        <div class="feature">
-          <span class="feature-icon" aria-hidden="true">📢</span>
-          <div class="feature-text">
-            <div class="feature-title">Poster Promo</div>
-            <div class="feature-desc">Ganti gambar dan judul popup promosi di halaman utama</div>
+    <!-- Area Kerja -->
+    <main class="flex-1 flex flex-col gap-6 min-w-0">
+      
+      <!-- Header -->
+      <header class="flex items-center justify-between">
+        <div>
+          <h1 class="font-bold text-[28px] text-fmbc-dark">Dashboard FMBC</h1>
+          <p class="text-fmbc-muted text-sm">Kelola konten website Farah Mom & Baby Care dengan mudah.</p>
+        </div>
+        <div class="flex gap-3">
+          <a href="/management/admin.html#/collections/paket/new" class="bg-white border border-fmbc px-4 py-3 rounded-[12px] font-bold text-sm text-fmbc-dark hover:bg-fmbc-light transition shadow-sm">Buat paket</a>
+          <a href="/management/admin.html#/collections/promo/new" class="bg-white border border-fmbc px-4 py-3 rounded-[12px] font-bold text-sm text-fmbc-dark hover:bg-fmbc-light transition shadow-sm">Unggah promo</a>
+          <a href="/management/admin.html#/collections/layanan/new" class="bg-fmbc-primary px-4 py-3 rounded-[12px] font-bold text-sm text-white hover:opacity-90 transition shadow-sm">Tambah treatment</a>
+        </div>
+      </header>
+
+      <!-- Summary Cards -->
+      <section class="grid grid-cols-3 gap-4">
+        <div class="bg-white border border-fmbc card-shadow p-5 rounded-[20px] flex flex-col gap-3">
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-sm text-fmbc-muted">Treatment</span>
+            <span class="bg-fmbc-light px-[10px] py-[6px] rounded-full font-bold text-[12px] text-fmbc-muted">Aktif</span>
+          </div>
+          <span class="font-bold text-[28px] text-fmbc-dark">6</span>
+          <p class="text-fmbc-muted text-[13px] leading-5">Total treatment & kelas tersedia untuk ibu dan bayi.</p>
+        </div>
+        <div class="bg-white border border-fmbc card-shadow p-5 rounded-[20px] flex flex-col gap-3">
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-sm text-fmbc-muted">Paket</span>
+            <span class="bg-fmbc-light px-[10px] py-[6px] rounded-full font-bold text-[12px] text-fmbc-muted">Bundle</span>
+          </div>
+          <span class="font-bold text-[28px] text-fmbc-dark">2</span>
+          <p class="text-fmbc-muted text-[13px] leading-5">Pilihan paket bundling hemat untuk perawatan lengkap.</p>
+        </div>
+        <div class="bg-white border border-fmbc card-shadow p-5 rounded-[20px] flex flex-col gap-3">
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-sm text-fmbc-muted">Promo aktif</span>
+            <span class="bg-fmbc-light px-[10px] py-[6px] rounded-full font-bold text-[12px] text-fmbc-muted">Popup</span>
+          </div>
+          <span class="font-bold text-[28px] text-fmbc-dark">1</span>
+          <p class="text-fmbc-muted text-[13px] leading-5">Popup promosi yang sedang tayang di halaman utama.</p>
+        </div>
+      </section>
+
+      <!-- Treatment Table Card -->
+      <section class="bg-white border border-fmbc card-shadow p-6 rounded-[20px] flex flex-col gap-5">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="font-bold text-lg text-fmbc-dark">Katalog Treatment</h2>
+            <p class="text-fmbc-muted text-[13px] leading-5">Area utama untuk mengelola nama treatment, kategori, harga, dan durasi.</p>
+          </div>
+          <a href="/management/admin.html#/collections/layanan" class="bg-fmbc-light px-[14px] py-[10px] rounded-[12px] font-bold text-[13px] text-fmbc-muted hover:bg-opacity-80 transition">Kelola Semua</a>
+        </div>
+        
+        <div class="bg-fmbc-light flex gap-3 items-center px-4 py-3 rounded-[12px] font-bold text-[12px] text-fmbc-muted uppercase tracking-wider">
+          <span class="flex-1">Nama treatment</span>
+          <span class="w-[140px]">Kategori</span>
+          <span class="w-[120px]">Harga mulai</span>
+          <span class="w-[80px]">Durasi</span>
+          <span class="w-[72px] text-right">Aksi</span>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="border-b border-fmbc flex gap-3 items-center px-4 py-3.5 hover:bg-gray-50 transition">
+            <span class="flex-1 font-semibold text-sm text-fmbc-dark">Baby Massage (0–12 Bulan)</span>
+            <span class="w-[140px] text-fmbc-muted text-sm">Baby Treatment</span>
+            <span class="w-[120px] font-bold text-sm text-fmbc-dark">Rp 100.000</span>
+            <span class="w-[80px] text-fmbc-muted text-sm">30 menit</span>
+            <div class="w-[72px] text-right"><a href="/management/admin.html#/collections/layanan" class="font-bold text-[13px] text-fmbc-primary hover:underline">Edit</a></div>
+          </div>
+          <div class="border-b border-fmbc flex gap-3 items-center px-4 py-3.5 hover:bg-gray-50 transition">
+            <span class="flex-1 font-semibold text-sm text-fmbc-dark">Baby Spa (3–10 Bulan)</span>
+            <span class="w-[140px] text-fmbc-muted text-sm">Baby Treatment</span>
+            <span class="w-[120px] font-bold text-sm text-fmbc-dark">Rp 185.000</span>
+            <span class="w-[80px] text-fmbc-muted text-sm">60 menit</span>
+            <div class="w-[72px] text-right"><a href="/management/admin.html#/collections/layanan" class="font-bold text-[13px] text-fmbc-primary hover:underline">Edit</a></div>
+          </div>
+          <div class="border-b border-fmbc flex gap-3 items-center px-4 py-3.5 hover:bg-gray-50 transition">
+            <span class="flex-1 font-semibold text-sm text-fmbc-dark">Kids Massage (1–10 Tahun)</span>
+            <span class="w-[140px] text-fmbc-muted text-sm">Kids Treatment</span>
+            <span class="w-[120px] font-bold text-sm text-fmbc-dark">Rp 90.000</span>
+            <span class="w-[80px] text-fmbc-muted text-sm">30 menit</span>
+            <div class="w-[72px] text-right"><a href="/management/admin.html#/collections/layanan" class="font-bold text-[13px] text-fmbc-primary hover:underline">Edit</a></div>
           </div>
         </div>
-        <div class="feature">
-          <span class="feature-icon" aria-hidden="true">👩‍⚕️</span>
-          <div class="feature-text">
-            <div class="feature-title">Daftar Bidan & Terapis</div>
-            <div class="feature-desc">Tambah, hapus, atau ganti foto dan nama tim perawatan</div>
+      </section>
+
+      <!-- Secondary Row -->
+      <section class="grid grid-cols-3 gap-4">
+        <div class="bg-white border border-fmbc card-shadow p-5 rounded-[20px] flex flex-col gap-4">
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-lg text-fmbc-dark">Sebelum publikasi</span>
+            <span class="bg-fmbc-light px-[10px] py-[6px] rounded-full font-bold text-[12px] text-fmbc-muted">Checklist</span>
+          </div>
+          <div class="flex flex-col gap-3">
+            <div class="flex gap-3 items-start">
+              <img src="ellipse.svg" class="mt-1.5 w-2 h-2" alt="">
+              <div>
+                <p class="font-bold text-sm text-fmbc-dark">Periksa harga & durasi</p>
+                <p class="text-fmbc-muted text-[13px] leading-5">Pastikan tarif mulai dan durasi sesuai informasi layanan terbaru.</p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <img src="ellipse.svg" class="mt-1.5 w-2 h-2" alt="">
+              <div>
+                <p class="font-bold text-sm text-fmbc-dark">Periksa periode promo</p>
+                <p class="text-fmbc-muted text-[13px] leading-5">Pastikan tanggal tayang dan poster sesuai sebelum mengaktifkan promo.</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="feature">
-          <span class="feature-icon" aria-hidden="true">💰</span>
-          <div class="feature-text">
-            <div class="feature-title">Harga Layanan</div>
-            <div class="feature-desc">Perbarui harga dan durasi treatment tanpa perlu coding</div>
+
+        <div class="bg-white border border-fmbc card-shadow p-5 rounded-[20px] flex flex-col gap-4">
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-lg text-fmbc-dark">Pilihan paket</span>
+            <a href="/management/admin.html#/collections/paket" class="bg-fmbc-light px-[10px] py-[6px] rounded-full font-bold text-[12px] text-fmbc-muted hover:bg-opacity-80 transition">2 paket</a>
+          </div>
+          <div class="flex flex-col gap-3">
+            <div class="bg-fmbc-light p-4 rounded-[16px] flex flex-col gap-2">
+              <p class="font-bold text-sm text-fmbc-dark">Happy Baby Package</p>
+              <p class="text-fmbc-muted text-[13px] leading-5">Baby Massage + Body Mask, 60 menit, mulai Rp 185.000 + gratis dimandikan.</p>
+            </div>
+            <div class="bg-fmbc-light p-4 rounded-[16px] flex flex-col gap-2">
+              <p class="font-bold text-sm text-fmbc-dark">Fahara Package</p>
+              <p class="text-fmbc-muted text-[13px] leading-5">Pijat Nifas & Laktasi, 90 menit, mulai Rp 325.000.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <p class="footer-note">Masuk dengan akun GitHub yang memiliki akses ke repository website FMBC</p>
-    </div>
+        <div class="bg-white border border-fmbc card-shadow p-5 rounded-[20px] flex flex-col gap-4">
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-lg text-fmbc-dark">Promo</span>
+            <a href="/management/admin.html#/collections/promo" class="bg-fmbc-light px-[10px] py-[6px] rounded-full font-bold text-[12px] text-fmbc-muted hover:bg-opacity-80 transition">Aktif</a>
+          </div>
+          <div>
+            <p class="font-bold text-sm text-fmbc-dark">Unggah poster promosi</p>
+            <p class="text-fmbc-muted text-[13px] leading-5">Tambahkan judul, gambar, dan periode promo untuk ditampilkan di halaman utama.</p>
+          </div>
+          <div class="bg-fmbc-light p-4 rounded-[16px]">
+            <p class="font-bold text-sm text-fmbc-dark" id="userStatus">Status: Mengecek sesi...</p>
+            <p class="text-fmbc-muted text-[13px] leading-5 mt-2">Gunakan tombol di sidebar untuk masuk atau mengelola data.</p>
+          </div>
+        </div>
+      </section>
 
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <script>
-      setTimeout(function() {
-        var welcome = document.getElementById('welcomeScreen');
-        var loading = document.getElementById('loadingIndicator');
-        if (welcome && !welcome.classList.contains('hidden')) {
-          loading.innerHTML = '<p class="loading-text" style="color:#c85a45;">Memuat lebih lama dari biasa. <a href="#" onclick="location.reload()">Muat ulang halaman</a> atau pastikan koneksi internet stabil.</p>';
-        }
-      }, 15000);
-    </script>
-  </body>
+    </main>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          const btn = document.getElementById('authBtn');
+          const status = document.getElementById('userStatus');
+          if (user) {
+            btn.innerText = user.email;
+            status.innerText = "Status: Terhubung (" + user.email.split('@')[0] + ")";
+          } else {
+            btn.innerText = "Login / Masuk";
+            status.innerText = "Status: Belum Login";
+          }
+        });
+        window.netlifyIdentity.on("login", user => {
+          document.getElementById('authBtn').innerText = user.email;
+          document.getElementById('userStatus').innerText = "Status: Terhubung";
+        });
+        window.netlifyIdentity.on("logout", () => {
+          document.getElementById('authBtn').innerText = "Login / Masuk";
+          document.getElementById('userStatus').innerText = "Status: Belum Login";
+        });
+      }
+    });
+  </script>
+</body>
 </html>
