@@ -143,7 +143,8 @@
 
         <!-- Gambar Promosi  -->
         <img
-          src="asset/promo.jpeg"
+          id="promoImg"
+          src="asset/promo 17-21 november 2025.png"
           alt="Poster promo"
           class="img-fluid rounded-4 shadow-lg"
           style="width: 100%; height: auto"
@@ -568,7 +569,7 @@
                 segar dan rileks. Semua dilakukan dalam suasana bersih, tenang,
                 dan penuh ketenangan agar setiap ibu merasa
                 dimanjakan sepenuhnya.
-                <img src="asset/mom_room.jpg" alt="Ruang Perawatan Ibu" />
+                <img src="asset/mom_treatment_room.jpg" alt="Ruang Perawatan Ibu" />
               </div>
             </div>
           </div>
@@ -595,7 +596,7 @@
                 Di rancang untuk kenyamanan dan di sediakan mainan untuk
                 anak-anak
                 <img
-                  src="asset/kid_massage_area.jpg"
+                  src="asset/area_kid_massage.jpg"
                   alt="area kid massage"
                   class="mt-3"
                 />
@@ -1017,6 +1018,17 @@
         { threshold: 0.2 },
       );
       fadeEls.forEach((el) => observer.observe(el));
+
+      // Load promo from Decap CMS; keep local fallback if unavailable
+      fetch("/content/promo.json", { cache: "no-cache" })
+        .then((response) => response.ok ? response.json() : Promise.reject())
+        .then((promo) => {
+          const popup = document.getElementById("promoPopup");
+          const image = document.getElementById("promoImg");
+          if (image && promo.image) image.src = promo.image;
+          if (popup && promo.active === false) popup.classList.add("d-none");
+        })
+        .catch(() => {});
 
       // pop up
       setTimeout(function () {
