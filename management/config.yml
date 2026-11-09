@@ -5,6 +5,12 @@ backend:
   base_url: https://fmbc-decap-auth.agungsempurno9-718.workers.dev
   auth_endpoint: auth
 
+app_title: "FMBC Content Manager"
+logo:
+  src: "/asset/logo.png"
+site_url: "https://farahmombabycare.com"
+display_url: "https://farahmombabycare.com"
+
 media_folder: "asset/uploads"
 public_folder: "/asset/uploads"
 
