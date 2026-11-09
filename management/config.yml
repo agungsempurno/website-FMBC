@@ -10,7 +10,7 @@ public_folder: "/asset/uploads"
 
 collections:
   - name: "promo"
-    label: "📢 Promo"
+    label: "Promo"
     files:
       - file: "content/promo.json"
         label: "Popup Promo Utama"
@@ -19,35 +19,3 @@ collections:
           - { label: "Judul Promo", name: "title", widget: "string", hint: "Muncul sebagai judul popup" }
           - { label: "Gambar Poster", name: "image", widget: "image", hint: "Upload gambar poster promo di sini" }
           - { label: "Aktifkan", name: "active", widget: "boolean", default: true }
-
-  - name: "layanan"
-    label: "💰 Layanan & Harga"
-    files:
-      - file: "content/layanan.json"
-        label: "Daftar Harga Treatment"
-        name: "layanan"
-        fields:
-          - name: "services"
-            label: "Daftar Treatment"
-            widget: "list"
-            fields:
-              - { label: "Nama Treatment", name: "name", widget: "string" }
-              - { label: "Kategori", name: "category", widget: "select", options: ["Baby Treatment", "Kids Treatment", "Mom Treatment", "Kelas Yoga & Parenting"] }
-              - { label: "Harga (Rp)", name: "price", widget: "number", value_type: "int" }
-              - { label: "Durasi", name: "duration", widget: "string", hint: "Contoh: 60 menit" }
-
-  - name: "tim"
-    label: "👩‍⚕️ Tim Bidan"
-    files:
-      - file: "content/therapists.json"
-        label: "Daftar Bidan & Terapis"
-        name: "tim"
-        fields:
-          - name: "therapists"
-            label: "Daftar Tim"
-            widget: "list"
-            fields:
-              - { label: "Nama Lengkap", name: "name", widget: "string" }
-              - { label: "Jabatan", name: "role", widget: "string" }
-              - { label: "Keahlian", name: "specialization", widget: "string" }
-              - { label: "Foto", name: "photo", widget: "image" }

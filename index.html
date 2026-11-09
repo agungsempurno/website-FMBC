@@ -1023,17 +1023,14 @@
       fetch("/content/promo.json", { cache: "no-cache" })
         .then((response) => response.ok ? response.json() : Promise.reject())
         .then((promo) => {
-          const popup = document.getElementById("promoPopup");
           const image = document.getElementById("promoImg");
           if (image && promo.image) image.src = promo.image;
-          if (popup && promo.active === false) popup.classList.add("d-none");
+          return promo.active !== false;
         })
-        .catch(() => {});
-
-      // pop up
-      setTimeout(function () {
-        document.getElementById("promoPopup").classList.remove("d-none");
-      }, 1000);
+        .catch(() => true)
+        .then((show) => {
+          if (show) setTimeout(() => document.getElementById("promoPopup").classList.remove("d-none"), 1000);
+        });
 
       document
         .getElementById("promoPopup")
