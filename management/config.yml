@@ -25,3 +25,20 @@ collections:
           - { label: "Judul Promo", name: "title", widget: "string", hint: "Muncul sebagai judul popup" }
           - { label: "Gambar Poster", name: "image", widget: "image", hint: "Upload gambar poster promo di sini" }
           - { label: "Aktifkan", name: "active", widget: "boolean", default: true }
+
+  - name: "tim"
+    label: "Tim Bidan & Therapist"
+    files:
+      - file: "content/therapists.json"
+        label: "Daftar Tim Therapist"
+        name: "tim"
+        fields:
+          - name: "therapists"
+            label: "Anggota Tim"
+            label_singular: "Therapist"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - { label: "Nama", name: "name", widget: "string", hint: "Contoh: Bidan Farah Riyadi" }
+              - { label: "Jabatan / Spesialis", name: "role", widget: "string", hint: "Muncul saat foto disentuh/di-hover" }
+              - { label: "Foto", name: "photo", widget: "image" }

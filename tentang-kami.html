@@ -571,7 +571,7 @@
             Siap memberikan sentuhan penuh kasih sayang untuk Bunda & buah hati.
           </p>
 
-          <div class="row g-5 justify-content-center">
+          <div class="row g-5 justify-content-center" id="therapistGrid">
             <!-- Therapist 1 -->
             <div class="col-md-4 col-lg-3">
               <div class="therapist-card text-center">
@@ -782,6 +782,28 @@
           .querySelector(".navbar")
           .classList.toggle("scrolled", window.scrollY > 50);
       });
+
+      // Load therapist list from CMS; keep hardcoded HTML if fetch fails
+      fetch("/content/therapists.json", { cache: "no-cache" })
+        .then((r) => (r.ok ? r.json() : Promise.reject()))
+        .then((data) => {
+          const grid = document.getElementById("therapistGrid");
+          if (!grid || !Array.isArray(data.therapists) || !data.therapists.length) return;
+          grid.replaceChildren(
+            ...data.therapists.map((t) => {
+              const col = document.createElement("div");
+              col.className = "col-md-4 col-lg-3";
+              col.innerHTML = `<div class="therapist-card text-center"><div class="therapist-img-wrapper"><img class="therapist-img" /><div class="therapist-overlay"><div class="overlay-text"></div></div></div><div class="therapist-name"></div></div>`;
+              const img = col.querySelector("img");
+              img.src = t.photo || "";
+              img.alt = t.name || "";
+              col.querySelector(".overlay-text").textContent = t.role || "";
+              col.querySelector(".therapist-name").textContent = t.name || "";
+              return col;
+            }),
+          );
+        })
+        .catch(() => {});
     </script>
   </body>
 </html>

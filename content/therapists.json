@@ -1,0 +1,44 @@
+{
+  "therapists": [
+    {
+      "name": "Bidan Farah Riyadi",
+      "role": "Founder & Head Therapist",
+      "photo": "/asset/therapist farah.png"
+    },
+    {
+      "name": "Bidan Lala",
+      "role": "Spesialis Mom Treatment",
+      "photo": "/asset/therapist  Lala.png"
+    },
+    {
+      "name": "Bidan Shelvi",
+      "role": "Spesialis Baby Spa",
+      "photo": "/asset/therapist shelvi.png"
+    },
+    {
+      "name": "Bidan Sukma",
+      "role": "Newborn Care Specialist",
+      "photo": "/asset/therapist sukma.png"
+    },
+    {
+      "name": "Bidan Rilla",
+      "role": "Kids Haircut & Treatment",
+      "photo": "/asset/therapist rilla.png"
+    },
+    {
+      "name": "Bidan Putri",
+      "role": "Kids Haircut & Treatment",
+      "photo": "/asset/therapist putri.png"
+    },
+    {
+      "name": "Therapist Tika",
+      "role": "Gentle Touch Expert",
+      "photo": "/asset/therapist tika.png"
+    },
+    {
+      "name": "Therapist Yaya",
+      "role": "Healing Touch",
+      "photo": "/asset/therapist yaya.png"
+    }
+  ]
+}
